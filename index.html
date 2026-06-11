@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Development Programme · Handbook</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #08111f;
+            --bg-2: #0a1626;
+            --surface: #0f2238;
+            --surface-2: #14304e;
+            --surface-3: #183a5e;
+            --line: rgba(128, 162, 204, 0.14);
+            --line-strong: rgba(128, 162, 204, 0.30);
+            --text: #e9eff7;
+            --text-2: #a3b4cc;
+            --text-3: #6f86a3;
+            --accent: #4fe0d2;
+            --accent-2: #7df0e4;
+            --accent-deep: #0fb9aa;
+            --accent-glow: rgba(79, 224, 210, 0.22);
+
+            --t-Regulation: oklch(0.76 0.115 250);
+            --t-TA: oklch(0.80 0.105 195);
+            --t-MHFA: oklch(0.78 0.115 158);
+            --t-Integration: oklch(0.74 0.115 305);
+
+            --display: 'Hanken Grotesk', system-ui, sans-serif;
+            --body: 'Manrope', system-ui, sans-serif;
+            --shadow: 0 24px 60px -28px rgba(0,0,0,0.75);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            position: relative;
+            font-family: var(--body);
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+        /* ambient calm glow — always present */
+        body::after {
+            content: "";
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                radial-gradient(900px 640px at 10% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+                radial-gradient(1000px 720px at 102% -4%, rgba(58,110,219,0.12), transparent 55%);
+        }
+        /* swappable texture layer */
+        body::before {
+            content: "";
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            opacity: 0; transition: opacity .4s;
+        }
+        body[data-tex="mist"]::before {
+            opacity: 1;
+            background-image:
+                radial-gradient(620px 520px at 78% 18%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+                radial-gradient(560px 480px at 18% 78%, rgba(125,160,220,0.10), transparent 62%),
+                radial-gradient(700px 560px at 95% 92%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%);
+        }
+        body[data-tex="grain"]::before {
+            opacity: .5;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+        }
+        body[data-tex="dots"]::before {
+            opacity: 1;
+            background-image: radial-gradient(rgba(140,175,215,0.10) 1px, transparent 1.4px);
+            background-size: 24px 24px;
+        }
+        .app, .tweaks-fab { position: relative; z-index: 1; }
+
+        /* watermark — chosen title mark, set into the top-right fog */
+        .watermark {
+            position: absolute;
+            top: clamp(-72px, -4vw, -28px);
+            right: clamp(-64px, -2vw, 8px);
+            width: clamp(300px, 33vw, 540px);
+            height: clamp(300px, 33vw, 540px);
+            z-index: 0;
+            pointer-events: none;
+            color: var(--accent);
+            opacity: 0.09;
+            display: grid; place-items: center;
+            transition: opacity .4s;
+        }
+        .watermark svg { width: 100%; height: 100%; }
+        .watermark.hidden { display: none; }
+
+        ::selection { background: var(--accent-glow); color: var(--text); }
+
+        /* Scrollbar */
+        .scroll-area::-webkit-scrollbar { width: 9px; }
+        .scroll-area::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 99px; border: 2px solid transparent; background-clip: padding-box; }
+        .scroll-area::-webkit-scrollbar-thumb:hover { background: var(--surface-3); background-clip: padding-box; }
+
+        .app {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            min-height: 100vh;
+        }
+        @media (min-width: 1024px) {
+            .app { grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr); }
+        }
+
+        main { padding: clamp(20px, 3.2vw, 52px); min-width: 0; }
+
+        /* ---------- Header ---------- */
+        .sl-hint { text-transform: none; letter-spacing: 0; color: var(--text-3); font-weight: 500; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--display);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .eyebrow::before {
+            content: "";
+            width: 26px; height: 1px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+        h1.title {
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: clamp(34px, 4.6vw, 56px);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            margin: 18px 0 0;
+            color: #fff;
+        }
+        .subtitle {
+            margin: 14px 0 0;
+            max-width: 46ch;
+            color: var(--text-2);
+            font-size: clamp(15px, 1.1vw, 17px);
+        }
+        .stat-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+        .stat {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            padding: 10px 16px 10px 14px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+        .stat b {
+            font-family: var(--display);
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .stat span { font-size: 12.5px; color: var(--text-3); letter-spacing: 0.04em; text-transform: uppercase; }
+
+        .divider { height: 1px; background: var(--line); margin: 34px 0; }
+
+        /* ---------- Core themes strip ---------- */
+        .themes-strip { }
+        .ts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+        }
+        @media (max-width: 520px) { .ts-grid { grid-template-columns: 1fr; } }
+        .ts-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            cursor: pointer;
+            padding: 14px 15px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            transition: border-color .18s, background .18s, transform .18s;
+        }
+        .ts-item:hover { border-color: color-mix(in srgb, var(--theme-color) 40%, var(--line)); transform: translateY(-2px); }
+        .ts-icon {
+            flex: none; margin-top: 1px;
+            width: 38px; height: 38px; border-radius: 11px;
+            display: grid; place-items: center;
+            color: var(--theme-color);
+            background: color-mix(in srgb, var(--theme-color) 13%, transparent);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 26%, transparent);
+        }
+        .ts-icon svg { width: 21px; height: 21px; }
+        .ts-item.ts-active {
+            border-color: color-mix(in srgb, var(--theme-color) 60%, transparent);
+            background: color-mix(in srgb, var(--theme-color) 9%, var(--surface));
+            box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-color) 50%, transparent);
+        }
+        .ts-name {
+            font-family: var(--display);
+            font-weight: 600; font-size: 14px; color: #fff;
+            margin: 0 0 3px; display: flex; align-items: center; gap: 7px;
+        }
+        .ts-abbr {
+            font-family: var(--body);
+            font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+            color: var(--theme-color);
+            background: color-mix(in srgb, var(--theme-color) 14%, transparent);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 30%, transparent);
+            padding: 1px 6px; border-radius: 99px;
+        }
+        .ts-desc { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--text-2); text-wrap: pretty; }
+
+        /* ---------- Term filter ---------- */
+        .section-label {
+            font-family: var(--display);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin: 0 0 14px;
+        }
+        .term-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 6px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+        }
+        .term-filter {
+            flex: 1 1 0;
+            text-align: center;
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-2);
+            background: transparent;
+            border: 0;
+            padding: 9px 16px;
+            border-radius: 9px;
+            cursor: pointer;
+            transition: color .18s, background .18s, box-shadow .18s;
+            white-space: nowrap;
+        }
+        .term-filter:hover { color: var(--text); background: var(--surface-2); }
+        .term-filter.active-term {
+            color: #04201d;
+            background: linear-gradient(180deg, var(--accent-2), var(--accent));
+            box-shadow: 0 6px 18px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+
+        /* ---------- Grid ---------- */
+        .grid-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 30px 0 16px;
+        }
+        h2.grid-title {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 22px;
+            letter-spacing: -0.01em;
+            color: #fff;
+            margin: 0;
+        }
+        .grid-count { font-size: 13px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .week-card {
+            position: relative;
+            text-align: left;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px 16px 18px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform .2s cubic-bezier(.2,.7,.3,1), border-color .2s, background .2s, box-shadow .2s;
+            font-family: var(--body);
+            color: var(--text);
+        }
+        .week-card::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--theme-color);
+            opacity: 0;
+            transition: opacity .2s;
+        }
+        .week-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--line-strong);
+            background: var(--surface-2);
+            box-shadow: var(--shadow);
+        }
+        .week-card:hover::before { opacity: .55; }
+        .week-card.active-week {
+            border-color: var(--accent);
+            background: var(--surface-2);
+            box-shadow: 0 0 0 1px var(--accent), 0 18px 44px -22px var(--accent-glow);
+        }
+        .week-card.active-week::before { opacity: 1; background: var(--accent); }
+
+        .wc-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .wc-num {
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 1;
+            color: var(--text-3);
+            font-variant-numeric: tabular-nums;
+            transition: color .2s;
+        }
+        .week-card:hover .wc-num, .week-card.active-week .wc-num { color: var(--text); }
+        .wc-icon {
+            width: 24px; height: 24px; border-radius: 8px;
+            display: grid; place-items: center;
+            color: var(--theme-color);
+            background: color-mix(in srgb, var(--theme-color) 14%, transparent);
+        }
+        .wc-icon svg { width: 14px; height: 14px; }
+        .wc-title {
+            font-weight: 600;
+            font-size: 14.5px;
+            color: var(--text);
+            margin: 0 0 6px;
+            line-height: 1.28;
+        }
+        .wc-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11.5px;
+            color: var(--text-3);
+            letter-spacing: 0.02em;
+        }
+        .wc-theme {
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            color: var(--theme-color);
+        }
+        .week-card { padding-bottom: 18px; }
+        .wc-vidlink {
+            position: absolute;
+            right: 13px;
+            bottom: 13px;
+            display: grid;
+            place-items: center;
+            color: color-mix(in srgb, var(--t-Regulation) 75%, #cfe3ff);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .wc-vidlink svg { width: 12px; height: 12px; margin-left: 1px; }
+        .week-card .wc-meta { padding-right: 26px; }
+
+        /* ---------- Themes chart card ---------- */
+        .panel {
+            margin-top: 38px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 26px;
+        }
+        .panel h3 {
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 19px;
+            color: #fff;
+            margin: 0 0 8px;
+        }
+        .panel p.muted { color: var(--text-2); font-size: 14px; margin: 0; max-width: 60ch; }
+        .chart-wrap {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 28px;
+            align-items: center;
+            margin-top: 22px;
+        }
+        @media (max-width: 480px) { .chart-wrap { grid-template-columns: 1fr; } }
+        .chart-container { position: relative; height: 200px; }
+        .chart-center {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+        .chart-center b { font-family: var(--display); font-size: 38px; font-weight: 700; color: #fff; line-height: 1; }
+        .chart-center span { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); margin-top: 4px; }
+        .legend { display: flex; flex-direction: column; gap: 4px; }
+        .legend-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 9px 12px; border-radius: 10px;
+            transition: background .15s;
+        }
+        .legend-item:hover { background: var(--surface-2); }
+        .legend-item .licon {
+            flex: none; width: 26px; height: 26px; border-radius: 8px;
+            display: grid; place-items: center;
+            background: color-mix(in srgb, currentColor 14%, transparent);
+        }
+        .legend-item .licon svg { width: 15px; height: 15px; }
+        .legend-item .lname { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); }
+        .legend-item .lcount { width: 22px; flex: none; text-align: right; font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+        .legend-item .lbar { width: 72px; flex: none; height: 5px; border-radius: 99px; background: var(--surface-3); overflow: hidden; display: flex; justify-content: flex-end; }
+        .legend-item .lbar i { display: block; height: 100%; border-radius: 99px; }
+
+        /* ---------- Details pane ---------- */
+        aside {
+            background: linear-gradient(180deg, var(--bg-2), var(--bg));
+            border-top: 1px solid var(--line);
+            position: relative;
+        }
+        @media (min-width: 1024px) {
+            aside {
+                border-top: 0;
+                border-left: 1px solid var(--line);
+                position: sticky; top: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
+        }
+        .pane-inner { padding: clamp(22px, 2.6vw, 44px); }
+
+        /* welcome */
+        .welcome {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            min-height: 60vh;
+            padding: 40px 20px;
+        }
+        .welcome-mark {
+            width: 84px; height: 84px; border-radius: 22px;
+            display: grid; place-items: center;
+            background: var(--surface);
+            border: 1px solid var(--line-strong);
+            box-shadow: var(--shadow);
+            margin-bottom: 26px;
+        }
+        .welcome-mark svg { width: 40px; height: 40px; }
+        .welcome h3 { font-family: var(--display); font-weight: 600; font-size: 26px; color: #fff; margin: 0 0 12px; }
+        .welcome p { color: var(--text-2); max-width: 40ch; margin: 0; }
+
+        /* detail header */
+        .detail-eyebrow {
+            font-family: var(--display);
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--accent);
+        }
+        .detail-head {
+            display: flex; align-items: flex-start; justify-content: space-between; gap: 18px;
+            margin-top: 12px;
+        }
+        h2.detail-title {
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: clamp(26px, 2.6vw, 36px);
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin: 0;
+        }
+        .theme-badge {
+            flex: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 7px 13px;
+            border-radius: 99px;
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--theme-color);
+            background: color-mix(in srgb, var(--theme-color) 12%, transparent);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 32%, transparent);
+            white-space: nowrap;
+        }
+        .theme-badge .tb-icon { display: inline-flex; align-items: center; color: var(--theme-color); }
+        .theme-badge .tb-icon svg { width: 14px; height: 14px; }
+        .focus-tag {
+            margin-top: 14px;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; color: var(--text-3);
+        }
+        .focus-tag b { color: var(--text-2); font-weight: 600; }
+
+        .detail-divider { height: 1px; background: var(--line); margin: 26px 0; }
+
+        .block { margin-bottom: 28px; }
+        .block-label {
+            font-family: var(--display);
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--text-3);
+            display: flex; align-items: center; gap: 12px;
+            margin: 0 0 14px;
+        }
+        .block-label::after { content:""; flex:1; height:1px; background: var(--line); }
+
+        .obj-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+        .obj-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text); }
+        .obj-list li .tick {
+            flex: none; margin-top: 2px;
+            width: 18px; height: 18px; border-radius: 6px;
+            display: grid; place-items: center;
+            background: color-mix(in srgb, var(--accent) 16%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+        .obj-list li .tick svg { width: 11px; height: 11px; stroke: var(--accent); }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            background: #000;
+        }
+        .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .video-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 10px;
+            font-size: 12.5px; font-weight: 600;
+            color: var(--accent); text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+        .video-link:hover { color: var(--accent-2); }
+        .video-link svg { width: 13px; height: 13px; }
+
+        .activities { display: flex; flex-direction: column; gap: 10px; }
+        .activity {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            padding: 15px 16px 15px 18px;
+            transition: border-color .18s, background .18s;
+        }
+        .activity::before {
+            content:""; position: absolute; left: 0; top: 12px; bottom: 12px;
+            width: 3px; border-radius: 99px; background: var(--theme-color); opacity: .75;
+        }
+        .activity:hover { border-color: var(--line-strong); background: var(--surface-2); }
+        .activity .a-name { font-family: var(--display); font-weight: 600; font-size: 14.5px; color: #fff; margin: 0 0 4px; }
+        .activity .a-desc { font-size: 13.5px; color: var(--text-2); margin: 0; line-height: 1.5; }
+        .activity.is-debrief::before { background: var(--accent); }
+        .activity .a-tag {
+            float: right;
+            font-family: var(--display);
+            font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--accent); font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .callout {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            padding: 16px 18px;
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.55;
+        }
+        .callout.note { border-left: 3px solid var(--accent); }
+        .grid-2 { display: grid; gap: 14px; }
+        @media (min-width: 560px) { .grid-2 { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+        /* fade-in for injected detail */
+        .fade-in { animation: fade .35s ease both; }
+        @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+            font-size: 12.5px;
+            color: var(--text-3);
+        }
+
+        /* ---------- Density + Motion (tweakable) ---------- */
+        body.density-compact main { padding: clamp(16px, 2.6vw, 38px); }
+        body.density-compact .weeks-grid { gap: 9px; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
+        body.density-compact .week-card { padding: 12px 13px 14px; }
+        body.density-compact .wc-num { font-size: 26px; }
+        body.density-compact .ts-grid { gap: 6px; }
+        body.density-compact .ts-item { padding: 11px 12px; }
+        body.density-compact .pane-inner { padding: clamp(16px, 2vw, 30px); }
+        body.density-compact .panel { padding: 20px; }
+        body.density-compact .divider { margin: 26px 0; }
+
+        body.no-anim .fade-in { animation: none !important; }
+        body.no-anim .week-card,
+        body.no-anim .ts-item { transition: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { animation: none !important; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ---------- Tweaks panel ---------- */
+        .tweaks-panel {
+            position: fixed;
+            right: 18px; bottom: 18px;
+            z-index: 50;
+            width: 312px; max-width: calc(100vw - 24px);
+            max-height: min(82vh, 720px);
+            display: none;
+            flex-direction: column;
+            background: color-mix(in srgb, var(--surface) 92%, #000);
+            border: 1px solid var(--line-strong);
+            border-radius: 18px;
+            box-shadow: 0 30px 70px -24px rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            font-family: var(--body);
+            overflow: hidden;
+        }
+        .tweaks-panel.open { display: flex; }
+        .tw-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 15px 16px;
+            border-bottom: 1px solid var(--line);
+        }
+        .tw-title {
+            font-family: var(--display); font-weight: 600; font-size: 15px; color: #fff;
+            display: flex; align-items: center; gap: 9px;
+        }
+        .tw-title .tw-spark { width: 14px; height: 14px; color: var(--accent); }
+        .tw-close {
+            border: 0; background: var(--surface-2); color: var(--text-2);
+            width: 28px; height: 28px; border-radius: 8px; cursor: pointer;
+            display: grid; place-items: center; transition: background .15s, color .15s;
+        }
+        .tw-close:hover { background: var(--surface-3); color: var(--text); }
+        .tw-body { padding: 6px 16px 18px; overflow-y: auto; }
+        .tw-section { margin-top: 16px; }
+        .tw-label {
+            font-family: var(--display); font-size: 10.5px; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3);
+            margin: 0 0 9px;
+        }
+        .tw-swatches { display: flex; gap: 8px; }
+        .tw-swatch {
+            width: 32px; height: 32px; border-radius: 9px; cursor: pointer;
+            border: 2px solid transparent; padding: 0;
+            transition: transform .12s, border-color .12s;
+        }
+        .tw-swatch:hover { transform: scale(1.08); }
+        .tw-swatch.sel { border-color: #fff; }
+        .tw-icons { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+        .tw-iconbtn {
+            aspect-ratio: 1; display: grid; place-items: center;
+            border-radius: 9px; cursor: pointer; padding: 0;
+            color: var(--text-2); background: var(--bg-2);
+            border: 1px solid var(--line);
+            transition: color .15s, background .15s, border-color .15s;
+        }
+        .tw-iconbtn:hover { color: var(--text); border-color: var(--line-strong); }
+        .tw-iconbtn.sel { color: #04201d; background: linear-gradient(180deg, var(--accent-2), var(--accent)); border-color: transparent; }
+        .tw-iconbtn svg { width: 18px; height: 18px; }
+        .tw-iconbtn .tw-none { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+        .tw-seg {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+            gap: 5px;
+            background: var(--bg-2); border: 1px solid var(--line);
+            border-radius: 11px; padding: 5px;
+        }
+        .tw-seg button {
+            font-family: var(--body); font-size: 12.5px; font-weight: 600;
+            color: var(--text-2); background: transparent; border: 0;
+            padding: 8px 4px; border-radius: 7px; cursor: pointer;
+            transition: background .15s, color .15s; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis;
+        }
+        .tw-seg button:hover { color: var(--text); }
+        .tw-seg button.sel {
+            color: #04201d;
+            background: linear-gradient(180deg, var(--accent-2), var(--accent));
+        }
+        .tw-toggle {
+            display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; user-select: none;
+        }
+        .tw-toggle span { font-size: 13.5px; font-weight: 500; color: var(--text); }
+        .tw-switch {
+            width: 42px; height: 24px; border-radius: 99px; flex: none;
+            background: var(--surface-3); position: relative; transition: background .18s;
+        }
+        .tw-switch::after {
+            content: ""; position: absolute; top: 3px; left: 3px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #fff; transition: transform .18s;
+        }
+        .tw-toggle.on .tw-switch { background: var(--accent); }
+        .tw-toggle.on .tw-switch::after { transform: translateX(18px); }
+        .tw-hint { font-size: 11.5px; color: var(--text-3); margin: 8px 0 0; line-height: 1.45; }
+    </style>
+</head>
+<body data-tex="mist">
+    <div class="watermark hidden" id="watermark" aria-hidden="true"></div>
+    <div class="app">
+        <!-- ============ LEFT: NAV + GRID ============ -->
+        <main>
+            <header>
+                <div class="eyebrow">ISAP · Staff Development</div>
+                <h1 class="title">Staff Development Programme</h1>
+                <p class="subtitle">A year-long programme built to reduce burnout from the high emotional labour of working in Inclusion Base contexts — strengthening the regulation, relational awareness and everyday resilience that help staff sustain themselves across the year.</p>
+                <div class="stat-row">
+                    <div class="stat"><b>39</b><span>Sessions</span></div>
+                    <div class="stat"><b>3</b><span>Terms</span></div>
+                    <div class="stat"><b>4</b><span>Core Themes</span></div>
+                </div>
+            </header>
+
+            <div class="divider"></div>
+
+            <section class="themes-strip" aria-label="Core themes">
+                <p class="section-label">The four core themes <span class="sl-hint">— tap to filter</span></p>
+                <div class="ts-grid">
+                    <div class="ts-item" data-theme="Regulation" role="button" tabindex="0" style="--theme-color:var(--t-Regulation)">
+                        <span class="ts-icon"></span>
+                        <div class="ts-body">
+                            <p class="ts-name">Regulation</p>
+                            <p class="ts-desc">Settling the body and nervous system so you can stay grounded under pressure.</p>
+                        </div>
+                    </div>
+                    <div class="ts-item" data-theme="TA" role="button" tabindex="0" style="--theme-color:var(--t-TA)">
+                        <span class="ts-icon"></span>
+                        <div class="ts-body">
+                            <p class="ts-name">Transactional Analysis <span class="ts-abbr">TA</span></p>
+                            <p class="ts-desc">Reading ego states and interactions to keep relationships clear and conscious.</p>
+                        </div>
+                    </div>
+                    <div class="ts-item" data-theme="MHFA" role="button" tabindex="0" style="--theme-color:var(--t-MHFA)">
+                        <span class="ts-icon"></span>
+                        <div class="ts-body">
+                            <p class="ts-name">Mental Health First Aid <span class="ts-abbr">MHFA</span></p>
+                            <p class="ts-desc">Noticing distress in others and offering safe, boundaried support.</p>
+                        </div>
+                    </div>
+                    <div class="ts-item" data-theme="Integration" role="button" tabindex="0" style="--theme-color:var(--t-Integration)">
+                        <span class="ts-icon"></span>
+                        <div class="ts-body">
+                            <p class="ts-name">Integration</p>
+                            <p class="ts-desc">Weaving the strands together into sustainable, everyday practice.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <nav>
+                <p class="section-label">Select a term to begin</p>
+                <div id="term-filters" class="term-filters">
+                    <button data-term="all" class="term-filter active-term">All Weeks</button>
+                    <button data-term="1" class="term-filter">Term 1</button>
+                    <button data-term="2" class="term-filter">Term 2</button>
+                    <button data-term="3" class="term-filter">Term 3</button>
+                </div>
+            </nav>
+
+            <section>
+                <div class="grid-head">
+                    <h2 id="grid-title" class="grid-title">All Weeks</h2>
+                    <span id="grid-count" class="grid-count"></span>
+                </div>
+                <div id="weeks-grid" class="weeks-grid"></div>
+            </section>
+
+            <section class="panel">
+                <h3>Programme Themes Overview</h3>
+                <p class="muted">How the year's sessions are distributed across the four core themes — each strand woven through the programme, with regulation and relational skills returning throughout.</p>
+                <div class="chart-wrap">
+                    <div class="chart-container">
+                        <canvas id="themesChart"></canvas>
+                        <div class="chart-center">
+                            <b>39</b>
+                            <span>Sessions</span>
+                        </div>
+                    </div>
+                    <div id="legend" class="legend"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ============ RIGHT: DETAILS ============ -->
+        <aside id="details-pane" class="scroll-area">
+            <div class="pane-inner">
+                <div id="session-details-content"></div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+    (function () {
+        const themeMeta = {
+            'Regulation':  { color: 'var(--t-Regulation)',  hex: '#6fa6f4' },
+            'TA':          { color: 'var(--t-TA)',          hex: '#4fd6e0' },
+            'MHFA':        { color: 'var(--t-MHFA)',        hex: '#5fd6a0' },
+            'Integration': { color: 'var(--t-Integration)', hex: '#b58cf0' },
+        };
+
+        const weeksGrid = document.getElementById('weeks-grid');
+        const detailsContent = document.getElementById('session-details-content');
+        const termFilters = document.getElementById('term-filters');
+        const gridTitle = document.getElementById('grid-title');
+        const gridCount = document.getElementById('grid-count');
+        const detailsPane = document.getElementById('details-pane');
+        let activeWeekElement = null;
+        let currentTerm = 'all';
+        let currentTheme = null;
+        const themeCards = document.querySelectorAll('.ts-item[data-theme]');
+
+        const themeIcons = {
+            'Regulation': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9c2-2.6 4-2.6 6 0s4 2.6 6 0 4-2.6 6 0"/><path d="M3 15c2-2.6 4-2.6 6 0s4 2.6 6 0 4-2.6 6 0"/></svg>',
+            'TA': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 4.5h16a1 1 0 011 1v9a1 1 0 01-1 1H10l-4 3.5V16.5H4a1 1 0 01-1-1v-9a1 1 0 011-1z"/><circle cx="8.5" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="1" fill="currentColor" stroke="none"/></svg>',
+            'MHFA': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20.5C6.8 17 4 13.9 4 10.3A4.3 4.3 0 0112 7.4a4.3 4.3 0 018 2.9c0 3.6-2.8 6.7-8 10.2z"/><path d="M12 10v4M10 12h4" stroke-linecap="round"/></svg>',
+            'Integration': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>',
+        };
+
+        const termNames = { '1': 'Foundations', '2': 'Dynamics', '3': 'Integration' };
+        const themeNames = { 'Regulation': 'Regulation', 'TA': 'Transactional Analysis', 'MHFA': 'Mental Health First Aid', 'Integration': 'Integration' };
+        function gridTitleText() {
+            if (currentTheme) return currentTerm === 'all' ? themeNames[currentTheme] : `${themeNames[currentTheme]} · Term ${currentTerm}`;
+            return currentTerm === 'all' ? 'All Weeks' : `Term ${currentTerm} — ${termNames[currentTerm]}`;
+        }
+
+        const LS = { term: 'isap_term', week: 'isap_week', theme: 'isap_theme' };
+
+        const playIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M8 6.5l9 5.5-9 5.5V6.5z" fill="currentColor"/></svg>';
+        const extIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M19 5l-8 8M17 13v5a1 1 0 01-1 1H6a1 1 0 01-1-1V8a1 1 0 011-1h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const watchUrl = (embed) => {
+            const m = String(embed).match(/embed\/([\w-]+)/);
+            return m ? `https://www.youtube.com/watch?v=${m[1]}` : embed;
+        };
+        const embedSrc = (embed) => {
+            const m = String(embed).match(/embed\/([\w-]+)/);
+            return m ? `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0&modestbranding=1` : embed;
+        };
+        const tickIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+        const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+        const welcomeHTML = () => `
+            <div class="welcome">
+                <div class="welcome-mark">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="15" stroke="var(--accent)" stroke-width="1.6" opacity="0.5"/>
+                        <circle cx="20" cy="20" r="9" stroke="var(--accent)" stroke-width="1.6"/>
+                        <circle cx="20" cy="20" r="2.6" fill="var(--accent)"/>
+                    </svg>
+                </div>
+                <h3>Welcome to the Handbook</h3>
+                <p>Select a week from the grid to open its detailed session plan — objectives, activities, resources and facilitator notes, ready to lead with confidence.</p>
+            </div>`;
+
+        function renderGrid() {
+            weeksGrid.innerHTML = '';
+            const list = sessionData.filter(s => (currentTerm === 'all' || s.term == currentTerm) && (!currentTheme || s.theme === currentTheme));
+            gridCount.textContent = `${list.length} ${list.length === 1 ? 'session' : 'sessions'}`;
+            gridTitle.textContent = gridTitleText();
+            list.forEach(session => {
+                const meta = themeMeta[session.theme] || { color: 'var(--text-3)' };
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.className = 'week-card';
+                card.style.setProperty('--theme-color', meta.color);
+                card.dataset.week = session.week;
+                card.innerHTML = `
+                    <div class="wc-top">
+                        <span class="wc-num">${String(session.week).padStart(2, '0')}</span>
+                        <span class="wc-icon">${themeIcons[session.theme] || ''}</span>
+                    </div>
+                    <p class="wc-title">${esc(session.title)}</p>
+                    <div class="wc-meta">
+                        <span class="wc-theme">${esc(session.theme)}</span>
+                    </div>`;
+                if (session.videoLink) {
+                    const vl = document.createElement('span');
+                    vl.className = 'wc-vidlink';
+                    vl.setAttribute('aria-hidden', 'true');
+                    vl.innerHTML = playIcon;
+                    card.appendChild(vl);
+                }
+                card.addEventListener('click', () => displaySessionDetails(session.week));
+                weeksGrid.appendChild(card);
+            });
+        }
+
+        function resetSelection() {
+            activeWeekElement = null;
+            detailsContent.innerHTML = welcomeHTML();
+            localStorage.removeItem(LS.week);
+        }
+
+        function displaySessionDetails(weekNumber) {
+            const session = sessionData.find(s => s.week === weekNumber);
+            if (!session) return;
+            localStorage.setItem(LS.week, weekNumber);
+
+            if (activeWeekElement) activeWeekElement.classList.remove('active-week');
+            activeWeekElement = weeksGrid.querySelector(`[data-week='${session.week}']`);
+            if (activeWeekElement) activeWeekElement.classList.add('active-week');
+
+            const meta = themeMeta[session.theme] || { color: 'var(--text-3)' };
+
+            const objHTML = session.objectives.map(o =>
+                `<li><span class="tick">${tickIcon}</span><span>${esc(o)}</span></li>`).join('');
+
+            const videoHTML = session.videoLink ? `
+                <div class="block">
+                    <p class="block-label">Supporting Video</p>
+                    <div class="video-frame">
+                        <iframe src="${embedSrc(session.videoLink)}" title="Supporting video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <a class="video-link" href="${watchUrl(session.videoLink)}" target="_blank" rel="noopener">${extIcon} Watch on YouTube</a>
+                </div>` : '';
+
+            const actHTML = session.activities.map((a, i) => `
+                <div class="activity${i === 0 ? ' is-debrief' : ''}">
+                    ${i === 0 ? '<span class="a-tag">Weekly ritual</span>' : ''}
+                    <p class="a-name">${esc(a.name)}</p>
+                    <p class="a-desc">${esc(a.desc)}</p>
+                </div>`).join('');
+
+            detailsContent.innerHTML = `
+                <div class="fade-in" style="--theme-color:${meta.color}">
+                    <div class="detail-eyebrow">Week ${String(session.week).padStart(2,'0')} · Term ${session.term}</div>
+                    <div class="detail-head">
+                        <h2 class="detail-title">${esc(session.title)}</h2>
+                        <span class="theme-badge"><span class="tb-icon">${themeIcons[session.theme] || ''}</span>${esc(session.theme)}</span>
+                    </div>
+                    <div class="focus-tag">Focus&nbsp;<b>${esc(session.focus)}</b></div>
+
+                    <div class="detail-divider"></div>
+
+                    <div class="block">
+                        <p class="block-label">Objectives</p>
+                        <ul class="obj-list">${objHTML}</ul>
+                    </div>
+
+                    ${videoHTML}
+
+                    <div class="block">
+                        <p class="block-label">Session Activities</p>
+                        <div class="activities">${actHTML}</div>
+                    </div>
+
+                    <div class="block">
+                        <p class="block-label">For This Session</p>
+                        <div class="grid-2">
+                            <div class="callout"><strong style="color:var(--text);font-weight:600;display:block;margin-bottom:4px;">Resources needed</strong>${esc(session.resources)}</div>
+                            <div class="callout note"><strong style="color:var(--text);font-weight:600;display:block;margin-bottom:4px;">Facilitator notes</strong>${esc(session.notes)}</div>
+                        </div>
+                    </div>
+                </div>`;
+
+            if (window.innerWidth < 1024) {
+                detailsPane.getBoundingClientRect();
+                window.scrollTo({ top: detailsPane.offsetTop - 8, behavior: 'smooth' });
+            } else {
+                detailsPane.scrollTop = 0;
+            }
+        }
+
+        termFilters.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            currentTerm = btn.dataset.term;
+            localStorage.setItem(LS.term, currentTerm);
+            document.querySelectorAll('.term-filter').forEach(b => b.classList.remove('active-term'));
+            btn.classList.add('active-term');
+            renderGrid();
+            resetSelection();
+        });
+
+        function setThemeFilter(theme) {
+            currentTheme = (currentTheme === theme) ? null : theme;
+            if (currentTheme) localStorage.setItem(LS.theme, currentTheme); else localStorage.removeItem(LS.theme);
+            themeCards.forEach(c => c.classList.toggle('ts-active', c.dataset.theme === currentTheme));
+            renderGrid();
+            resetSelection();
+        }
+        themeCards.forEach(c => {
+            c.addEventListener('click', () => setThemeFilter(c.dataset.theme));
+            c.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setThemeFilter(c.dataset.theme); } });
+        });
+
+        function renderThemesChart() {
+            const counts = sessionData.reduce((acc, s) => { acc[s.theme] = (acc[s.theme] || 0) + 1; return acc; }, {});
+            const labels = Object.keys(themeMeta).filter(k => counts[k]);
+            const values = labels.map(l => counts[l]);
+            const colors = labels.map(l => themeMeta[l].hex);
+            const total = values.reduce((a, b) => a + b, 0);
+            const cc = document.querySelector('.chart-center b');
+            if (cc) cc.textContent = total;
+
+            // custom legend
+            const legend = document.getElementById('legend');
+            legend.innerHTML = labels.map((l, i) => `
+                <div class="legend-item">
+                    <span class="licon" style="color:${colors[i]}">${themeIcons[l] || ''}</span>
+                    <span class="lname">${l}</span>
+                    <span class="lbar"><i style="width:${Math.round(values[i]/Math.max(...values)*100)}%;background:${colors[i]}"></i></span>
+                    <span class="lcount">${values[i]}</span>
+                </div>`).join('');
+
+            const ctx = document.getElementById('themesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: { labels, datasets: [{
+                    data: values,
+                    backgroundColor: colors,
+                    borderColor: 'rgba(8,17,31,0.9)',
+                    borderWidth: 3,
+                    hoverOffset: 6,
+                }]},
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '72%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f2238',
+                            borderColor: 'rgba(128,162,204,0.3)',
+                            borderWidth: 1,
+                            padding: 12,
+                            titleFont: { family: 'Manrope', weight: '700', size: 13 },
+                            bodyFont: { family: 'Manrope', size: 13 },
+                            displayColors: true,
+                            callbacks: {
+                                label: (c) => `  ${values[c.dataIndex]} session${values[c.dataIndex] === 1 ? '' : 's'} (${Math.round(values[c.dataIndex]/total*100)}%)`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ---- init (restore last view) ----
+        const savedTerm = localStorage.getItem(LS.term) || 'all';
+        currentTerm = savedTerm;
+        currentTheme = localStorage.getItem(LS.theme) || null;
+        const startBtn = termFilters.querySelector(`[data-term='${savedTerm}']`) || termFilters.querySelector("[data-term='all']");
+        document.querySelectorAll('.term-filter').forEach(b => b.classList.remove('active-term'));
+        startBtn.classList.add('active-term');
+        themeCards.forEach(c => {
+            const ic = c.querySelector('.ts-icon');
+            if (ic) ic.innerHTML = themeIcons[c.dataset.theme] || '';
+            c.classList.toggle('ts-active', c.dataset.theme === currentTheme);
+        });
+        renderGrid();
+
+        const savedWeek = parseInt(localStorage.getItem(LS.week), 10);
+        if (savedWeek && sessionData.some(s => s.week === savedWeek && (currentTerm === 'all' || s.term == currentTerm) && (!currentTheme || s.theme === currentTheme))) {
+            displaySessionDetails(savedWeek);
+        } else {
+            detailsContent.innerHTML = welcomeHTML();
+        }
+
+        renderThemesChart();
+    })();
+    </script>
+    <script src="tweaks.js"></script>
+</body>
+</html>
