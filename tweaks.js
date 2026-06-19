@@ -1,7 +1,7 @@
 // Tweaks panel for Staff Development Handbook — vanilla, wired to the host edit-mode protocol.
 (function () {
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "titleIcon": "Lotus",
+    "titleIcon": "None",
     "accent": "Teal",
     "tone": "Navy",
     "texture": "Mist",
@@ -31,7 +31,6 @@
     'Space Grotesk':  "'Space Grotesk', system-ui, sans-serif",
   };
   const TITLE_ICONS = {
-    Lotus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5c1.6 2 1.6 4.8 0 7-1.6-2.2-1.6-5 0-7z"/><path d="M12 11.5c2-1.6 4.7-1.5 6.8.2-1 2.3-3.2 3.5-5.6 3.2"/><path d="M12 11.5c-2-1.6-4.7-1.5-6.8.2 1 2.3 3.2 3.5 5.6 3.2"/><path d="M4.6 13.8C6.5 17 9.1 18.7 12 18.7s5.5-1.7 7.4-4.9"/></svg>',
     Brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 6.5v12"/><path d="M12 7a3 3 0 00-5.8-1.1A2.7 2.7 0 003.9 8.4 2.7 2.7 0 004.6 13 2.9 2.9 0 008 16.8a3 3 0 004-1"/><path d="M12 7a3 3 0 015.8-1.1A2.7 2.7 0 0120.1 8.4 2.7 2.7 0 0119.4 13 2.9 2.9 0 0116 16.8a3 3 0 01-4-1"/></svg>',
     Mind: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 16a3.2 3.2 0 01-.2-6.4 2.1 2.1 0 01.3 4.2 1 1 0 01-.2-2"/></svg>',
     Heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20C6.9 16.4 4 13.2 4 9.8A4.2 4.2 0 0112 7a4.2 4.2 0 018 2.8c0 3.4-2.9 6.6-8 10.2z"/></svg>',
@@ -43,6 +42,8 @@
     const saved = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
     t = { ...t, ...saved };
   } catch (e) {}
+  // retired the decorative corner marks — default to the bare mist/fog background
+  if (t.titleIcon === 'Lotus' || t.titleIcon === 'Ripple' || t.titleIcon === 'Rays') t.titleIcon = 'None';
 
   const root = document.documentElement;
 
@@ -137,7 +138,7 @@
 
   // title mark icons
   const titleWrap = panel.querySelector('#tw-titleicon');
-  ['Lotus', 'Brain', 'Mind', 'Heart', 'Leaf', 'None'].forEach(name => {
+  ['None', 'Brain', 'Mind', 'Heart', 'Leaf'].forEach(name => {
     const b = document.createElement('button');
     b.className = 'tw-iconbtn';
     b.dataset.val = name;
