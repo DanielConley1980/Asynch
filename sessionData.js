@@ -7,7 +7,7 @@ const sessionData = [
   // ─── TIER 1: REGULATE (sessions 1–6) ────────────────────────────────────
   {
     session: 1,
-    title: "The triangle: Regulate, Relate, Reason",
+    title: "Regulate, relate, reason",
     theme: "Regulate",
     tier: 1,
     reflectionQ: "Think of a student you find genuinely difficult to support. Which of these feels closest to what you think when things go wrong?",
@@ -67,7 +67,7 @@ const sessionData = [
   },
   {
     session: 5,
-    title: "Early trauma & the over-sensitised brain",
+    title: "Early trauma & the brain",
     theme: "Regulate",
     tier: 1,
     reflectionQ: "How does knowing a student has experienced early trauma change — or not change — how you feel about their most challenging behaviour?",
@@ -124,12 +124,12 @@ const sessionData = [
       "C) Looking for the bright side — I find it hard not to offer hope",
       "D) Going quiet — I'm not sure I say the right things"
     ],
-    videoLink: "https://www.youtube.com/embed/F0WYFXxhPGY",
+    videoLink: "https://www.youtube.com/embed/1Evwgu369Jw",
     videoNote: "Empathy vs sympathy — Brené Brown animation"
   },
   {
     session: 9,
-    title: "Active listening",
+    title: "The power of relationships",
     theme: "Relate",
     tier: 2,
     reflectionQ: "In an honest moment — when someone is talking to you, what percentage of the time are you fully present rather than forming your response?",
@@ -139,12 +139,27 @@ const sessionData = [
       "C) Probably mostly composing my response if I'm honest",
       "D) It depends entirely on who is talking and whether I'm stressed"
     ],
-    videoLink: null,
-    videoNote: "Source video on active listening skills in educational/therapeutic contexts"
+    videoLink: "https://www.youtube.com/embed/kzvm1m8zq5g",
+    videoNote: "How safe relationships release oxytocin, build belonging and support regulation"
   },
   {
     session: 10,
-    title: "Transactional Analysis: ego states",
+    title: "Pears Family School",
+    theme: "Relate",
+    tier: 2,
+    reflectionQ: "What's your honest first response to the idea that parents should come into school every week alongside their children?",
+    reflectionOpts: [
+      "A) Exciting — that level of integration could change everything",
+      "B) Logistically daunting — I can see how much it would take",
+      "C) Uncertain — I'm not sure all families would engage or benefit",
+      "D) Envious — I wish something like this existed where I work"
+    ],
+    videoLink: "https://www.youtube.com/embed/7PaQWTNIgaE",
+    videoNote: "Source: Pears Foundation / Pears Family School documentary or case study film"
+  },
+  {
+    session: 11,
+    title: "Why your ego thrives on conflict",
     theme: "Relate",
     tier: 2,
     reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
@@ -154,12 +169,12 @@ const sessionData = [
       "C) Adapted Child — I comply and please even when I shouldn't",
       "D) Adult — I feel fairly grounded in most situations"
     ],
-    videoLink: "https://www.youtube.com/embed/z_-rNd7h6z8",
-    videoNote: "Introduction to Transactional Analysis — Eric Berne"
+    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
+    videoNote: "Why the ego feeds on conflict, drama and being right"
   },
   {
-    session: 11,
-    title: "Transactions in the staffroom",
+    session: 12,
+    title: "Relational practice in the classroom",
     theme: "Relate",
     tier: 2,
     reflectionQ: "Think of a recent staffroom conversation that didn't go the way you hoped. What do you think was really going on underneath it?",
@@ -169,11 +184,11 @@ const sessionData = [
       "C) There was a hidden agenda — things we weren't saying directly",
       "D) It was probably fine — I'm overthinking it"
     ],
-    videoLink: null,
-    videoNote: "Source video on TA transactions in workplace relationships"
+    videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
+    videoNote: "Relational practice in everyday classroom interactions"
   },
   {
-    session: 12,
+    session: 13,
     title: "Strokes & recognition",
     theme: "Relate",
     tier: 2,
@@ -188,7 +203,7 @@ const sessionData = [
     videoNote: "Recognition, strokes and human connection"
   },
   {
-    session: 13,
+    session: 14,
     title: "My ego under stress",
     theme: "Relate",
     tier: 2,
@@ -203,7 +218,7 @@ const sessionData = [
     videoNote: "Source video on ego, mindfulness and the observing self — Eckhart Tolle"
   },
   {
-    session: 14,
+    session: 15,
     title: "The Drama Triangle",
     theme: "Relate",
     tier: 2,
@@ -216,21 +231,6 @@ const sessionData = [
     ],
     videoLink: null,
     videoNote: "Source video on the Karpman Drama Triangle"
-  },
-  {
-    session: 15,
-    title: "PEARS Family School: the model",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "What's your honest first response to the idea that parents should come into school every week alongside their children?",
-    reflectionOpts: [
-      "A) Exciting — that level of integration could change everything",
-      "B) Logistically daunting — I can see how much it would take",
-      "C) Uncertain — I'm not sure all families would engage or benefit",
-      "D) Envious — I wish something like this existed where I work"
-    ],
-    videoLink: null,
-    videoNote: "Source: Pears Foundation / Pears Family School documentary or case study film"
   },
   {
     session: 16,
