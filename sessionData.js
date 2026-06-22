@@ -62,8 +62,8 @@ const sessionData = [
       "C) Sadness — it felt like a moment of failure for everyone",
       "D) Detachment — I tried to watch it analytically"
     ],
-    videoLink: null,
-    videoNote: "BBC3 'An Incident in School' — source/license required (first exposure)"
+    videoLink: "https://www.youtube.com/embed/kX3xO2J4Icg",
+    videoNote: "Case study: a regulated, communicating pupil escalates to restraint when staff miss natural curiosity and listening (relate)"
   },
   {
     session: 5,
