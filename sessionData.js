@@ -17,7 +17,7 @@ const sessionData = [
       "C) They need firmer boundaries and more consistent consequences",
       "D) I worry I'm part of the problem somehow"
     ],
-    videoLink: "https://www.youtube.com/embed/cEqZthCaMpo",
+    videoLink: "https://www.youtube.com/embed/_3is_3XHKKs",
     videoNote: "Introduction to the neurosequential model — Bruce Perry"
   },
   {
@@ -32,7 +32,7 @@ const sessionData = [
       "C) The part that keeps going on autopilot without really thinking",
       "D) I stay pretty much the same under pressure"
     ],
-    videoLink: "https://www.youtube.com/embed/jsyuxEntsas",
+    videoLink: "https://www.youtube.com/embed/4-tcKYx24aA",
     videoNote: "Brain architecture and bottom-up development"
   },
   {
@@ -244,7 +244,7 @@ const sessionData = [
       "C) Progress came first — the connection grew through shared success",
       "D) I'm not sure the connection was the key factor"
     ],
-    videoLink: "https://www.youtube.com/embed/c1Ndym-IsQg",
+    videoLink: "https://www.youtube.com/embed/COMwI2akgqM",
     videoNote: "Attachment, safety and the social engagement system"
   },
   {
@@ -516,7 +516,7 @@ const sessionData = [
       "C) A relational cue — someone I trust makes it feel safe to think again",
       "D) I'm not sure I've noticed the shift consciously before"
     ],
-    videoLink: null,
+    videoLink: "https://www.youtube.com/embed/cNzkyFPA7Lc",
     videoNote: "Source video on cortex, executive function and the last-online-first-offline principle"
   },
   {

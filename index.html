@@ -659,9 +659,68 @@
 
         /* ── Quiz ────────────────────────────────────────── */
 
-        /* Completed session card tick */
-        .sc-done .sc-num::after { content:'✓'; position:absolute; inset:0; display:grid; place-items:center; background:inherit; border-radius:inherit; font-size:11px; }
-        .sc-done { opacity: 1 !important; }
+        /* Gold session card — quiz passed (≥ 4/5). Option B: gold rim + glow + gold number/trophy. */
+        .week-card.wc-gold {
+            border-color: #f5c451;
+            box-shadow: 0 0 0 1px #f5c451, 0 18px 40px -22px rgba(245,196,81,0.55);
+        }
+        .week-card.wc-gold::before { opacity: 1; background: #f5c451; }
+        .week-card.wc-gold:hover { border-color: #ffd877; }
+        .week-card.wc-gold .wc-num { color: #ffd877; }
+        .week-card.wc-gold .wc-icon {
+            color: #ffd877;
+            background: color-mix(in srgb, #f5c451 18%, transparent);
+        }
+
+        /* Demo sign-in gate */
+        .login-overlay {
+            position: fixed; inset: 0; z-index: 2000;
+            display: grid; place-items: center; padding: 24px;
+            background:
+                radial-gradient(1100px 560px at 50% -12%, var(--accent-glow), transparent 60%),
+                var(--bg);
+            animation: fade .4s ease both;
+        }
+        .login-overlay.hide { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+        .login-card {
+            width: 100%; max-width: 380px; text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 38px 32px 30px;
+            box-shadow: var(--shadow);
+        }
+        .login-badge {
+            width: 52px; height: 52px; margin: 0 auto 20px;
+            display: grid; place-items: center; border-radius: 14px;
+            color: var(--accent);
+            background: color-mix(in srgb, var(--accent) 14%, transparent);
+        }
+        .login-badge svg { width: 26px; height: 26px; }
+        .login-eyebrow {
+            font-family: var(--display); font-size: 10.5px; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+            margin: 0 0 8px;
+        }
+        .login-title {
+            font-family: var(--display); font-size: 22px; font-weight: 700;
+            color: var(--text); margin: 0 0 10px; line-height: 1.2;
+        }
+        .login-sub {
+            font-size: 13.5px; color: var(--text-2); line-height: 1.5;
+            margin: 0 auto 24px; max-width: 30ch;
+        }
+        .gbtn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 12px 18px;
+            background: #fff; color: #1f1f1f;
+            border: 1px solid #dadce0; border-radius: 10px;
+            font-family: var(--body); font-size: 14.5px; font-weight: 600;
+            cursor: pointer; transition: box-shadow .15s, transform .08s;
+        }
+        .gbtn:hover { box-shadow: 0 1px 4px rgba(0,0,0,0.35); }
+        .gbtn:active { transform: translateY(1px); }
+        .login-foot { font-size: 11.5px; color: var(--text-3); margin: 16px 0 0; }
 
         .quiz-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin: 0 0 14px; }
         .quiz-status { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
@@ -838,6 +897,29 @@
 </head>
 <body data-tex="mist">
     <div class="watermark hidden" id="watermark" aria-hidden="true"></div>
+
+    <!-- Demo sign-in gate (visual only — no real OAuth) -->
+    <div class="login-overlay" id="login-overlay">
+        <div class="login-card">
+            <div class="login-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 21 19 H3 Z"/></svg>
+            </div>
+            <p class="login-eyebrow">ISAP · Staff Development</p>
+            <h1 class="login-title">Staff Development Programme</h1>
+            <p class="login-sub">Sign in to track your progress and earn gold on each completed session.</p>
+            <button class="gbtn" id="google-signin" type="button">
+                <svg class="g-logo" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true">
+                    <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.71-1.57 2.68-3.89 2.68-6.62z"/>
+                    <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.81.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>
+                    <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/>
+                    <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/>
+                </svg>
+                <span>Sign in with Google</span>
+            </button>
+            <p class="login-foot">Demo only — no account is created. Click to continue.</p>
+        </div>
+    </div>
+
     <div class="app">
         <!-- ============ LEFT: NAV + GRID ============ -->
         <main>
@@ -965,7 +1047,7 @@ const sessionData = [
       "C) They need firmer boundaries and more consistent consequences",
       "D) I worry I'm part of the problem somehow"
     ],
-    videoLink: "https://www.youtube.com/embed/cEqZthCaMpo",
+    videoLink: "https://www.youtube.com/embed/_3is_3XHKKs",
     videoNote: "Introduction to the neurosequential model — Bruce Perry"
   },
   {
@@ -980,7 +1062,7 @@ const sessionData = [
       "C) The part that keeps going on autopilot without really thinking",
       "D) I stay pretty much the same under pressure"
     ],
-    videoLink: "https://www.youtube.com/embed/jsyuxEntsas",
+    videoLink: "https://www.youtube.com/embed/4-tcKYx24aA",
     videoNote: "Brain architecture and bottom-up development"
   },
   {
@@ -1192,7 +1274,7 @@ const sessionData = [
       "C) Progress came first — the connection grew through shared success",
       "D) I'm not sure the connection was the key factor"
     ],
-    videoLink: "https://www.youtube.com/embed/c1Ndym-IsQg",
+    videoLink: "https://www.youtube.com/embed/COMwI2akgqM",
     videoNote: "Attachment, safety and the social engagement system"
   },
   {
@@ -1464,7 +1546,7 @@ const sessionData = [
       "C) A relational cue — someone I trust makes it feel safe to think again",
       "D) I'm not sure I've noticed the shift consciously before"
     ],
-    videoLink: null,
+    videoLink: "https://www.youtube.com/embed/cNzkyFPA7Lc",
     videoNote: "Source video on cortex, executive function and the last-online-first-offline principle"
   },
   {
@@ -2284,6 +2366,15 @@ function getCallbackQuestions() {
 
         const playIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M8 6.5l9 5.5-9 5.5V6.5z" fill="currentColor"/></svg>';
         const extIcon  = '<svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M19 5l-8 8M17 13v5a1 1 0 01-1 1H6a1 1 0 01-1-1V8a1 1 0 011-1h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const trophyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 01-8 0V4z"/><path d="M8 5.5H5.5A1.5 1.5 0 004 7c0 1.9 1.6 3 4 3"/><path d="M16 5.5h2.5A1.5 1.5 0 0120 7c0 1.9-1.6 3-4 3"/><path d="M12 13v3"/><path d="M9.5 20h5l-.5-4h-4z"/></svg>';
+
+        // Mark a session card as "gold" — passed quiz (≥ 4/5). Used on load and after a passing submit.
+        function applyGold(card) {
+            if (!card) return;
+            card.classList.add('wc-gold');
+            const icon = card.querySelector('.wc-icon');
+            if (icon) icon.innerHTML = trophyIcon;
+        }
         const tickIcon = '<svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
         const watchUrl  = e => { const m = String(e).match(/embed\/([\w-]+)/); return m ? `https://www.youtube.com/watch?v=${m[1]}` : e; };
@@ -2362,6 +2453,7 @@ function getCallbackQuestions() {
                     vl.innerHTML = playIcon;
                     card.appendChild(vl);
                 }
+                if (Store.isComplete(s.session)) applyGold(card);
                 card.addEventListener('click', () => displaySessionDetails(s.session));
                 weeksGrid.appendChild(card);
             });
@@ -2457,7 +2549,7 @@ function getCallbackQuestions() {
                 const d = this.load();
                 if (!d[n]) d[n] = { completed: false, attempts: [], reflectionAnswer: '' };
                 d[n].attempts.push({ date: new Date().toISOString(), score, total, answers });
-                if (score === total) d[n].completed = true;
+                if (score >= total - 1) d[n].completed = true;   // pass at 4/5 or better
                 this.save();
                 return d[n];
             },
@@ -2514,13 +2606,15 @@ function getCallbackQuestions() {
                 </div>`;
             }).join('');
 
+            const passMark = qData.questions.length - 1;   // 4 of 5
+            const bestScore = prevAttempts.length ? Math.max(...prevAttempts.map(a => a.score)) : 0;
             const resultHTML = lastAttempt && !completed && !fresh
                 ? `<div class="quiz-result fail">
-                    ${lastAttempt.score}/${lastAttempt.total} correct — you need all ${lastAttempt.total} to pass. Review the highlighted answers and try again.
+                    ${lastAttempt.score}/${lastAttempt.total} correct — you need ${passMark} of ${lastAttempt.total} to pass. Review the highlighted answers and try again.
                     <br><button class="quiz-retry" id="quiz-retry-btn">Try Again</button>
                   </div>`
                 : completed
-                    ? `<div class="quiz-result pass">✓ Session complete — all ${qData.questions.length} questions answered correctly.</div>`
+                    ? `<div class="quiz-result pass">✓ Session complete — passed with ${bestScore}/${qData.questions.length}.</div>`
                     : '';
 
             block.innerHTML = `
@@ -2556,10 +2650,9 @@ function getCallbackQuestions() {
                 answers.forEach((ans, i) => { if (ans === qs[i].answer) score++; });
                 const state = Store.saveQuizAttempt(sessionNum, answers, score, qs.length);
 
-                // Update grid card if complete
+                // Turn the grid card gold if this attempt passed
                 if (state.completed) {
-                    const card = document.querySelector(`.session-card[data-session="${sessionNum}"]`);
-                    if (card) card.classList.add('sc-done');
+                    applyGold(document.querySelector(`.week-card[data-week="${sessionNum}"]`));
                 }
 
                 renderQuiz(sessionNum, themeColor);
@@ -2663,6 +2756,19 @@ function getCallbackQuestions() {
 
         renderThemesChart();
     })();
+    </script>
+    <script>
+        // Demo sign-in gate — visual only. "Signing in" just dismisses the overlay.
+        (function () {
+            const ov = document.getElementById('login-overlay');
+            const btn = document.getElementById('google-signin');
+            if (!ov || !btn) return;
+            btn.addEventListener('click', () => {
+                try { localStorage.setItem('ib-demo-user', 'demo.user@school.org'); } catch (e) {}
+                ov.classList.add('hide');
+                setTimeout(() => ov.remove(), 500);
+            });
+        })();
     </script>
     <script src="tweaks.js"></script>
 </body>

@@ -23,6 +23,7 @@ while ($listener.IsListening) {
             default { 'application/octet-stream' }
         }
         $res.ContentType = $mime
+        $res.Headers.Add("Cache-Control", "no-store")
         $res.ContentLength64 = $bytes.Length
         $res.OutputStream.Write($bytes, 0, $bytes.Length)
     } else {
