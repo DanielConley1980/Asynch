@@ -1129,7 +1129,7 @@
 
         const watchUrl  = e => { const m = String(e).match(/embed\/([\w-]+)/); return m ? `https://www.youtube.com/watch?v=${m[1]}` : e; };
         const thumbUrl  = e => { const m = String(e).match(/embed\/([\w-]+)/); return m ? `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg` : ''; };
-        const embedSrc  = e => { const m = String(e).match(/embed\/([\w-]+)/); return m ? `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0&modestbranding=1&enablejsapi=1` : e; };
+        const embedSrc  = e => { const m = String(e).match(/embed\/([\w-]+)/); return m ? `https://www.youtube.com/embed/${m[1]}?rel=0&modestbranding=1&enablejsapi=1` : e; };
 
         // Fall back to thumbnail if YouTube blocks embedding (error 150/153)
         window.addEventListener('message', ev => {
