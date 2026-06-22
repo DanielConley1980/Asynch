@@ -77,7 +77,7 @@ const sessionData = [
       "C) It creates a tension — I understand it but worry about lowering expectations",
       "D) I'm not sure it changes much in practice"
     ],
-    videoLink: "https://www.youtube.com/embed/oPJtRDul0do",
+    videoLink: "https://www.youtube.com/embed/xYBUY1kZpf8",
     videoNote: "ACEs and the impact of childhood adversity — Nadine Burke Harris"
   },
   {
@@ -92,8 +92,8 @@ const sessionData = [
       "C) Feel anxious but push through it",
       "D) I have a small ritual that genuinely helps me"
     ],
-    videoLink: "https://www.youtube.com/embed/jyxKxAlkuDE",
-    videoNote: "Somatic regulation and the vagal brake"
+    videoLink: "https://www.youtube.com/embed/SHC1ZiUu-9E",
+    videoNote: "Introduction to mindfulness — present-moment awareness as a regulation tool"
   },
   {
     session: 7,
