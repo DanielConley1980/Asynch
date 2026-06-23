@@ -129,18 +129,18 @@ const sessionData = [
   },
   {
     session: 9,
-    title: "The power of relationships",
+    title: "Why your ego thrives on conflict",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "In an honest moment — when someone is talking to you, what percentage of the time are you fully present rather than forming your response?",
+    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
     reflectionOpts: [
-      "A) Mostly present — I genuinely find it easy to listen",
-      "B) About half and half — I drift but come back",
-      "C) Probably mostly composing my response if I'm honest",
-      "D) It depends entirely on who is talking and whether I'm stressed"
+      "A) Critical Parent — I can hear myself getting sharp or judgemental",
+      "B) Nurturing Parent — I tend toward rescue and over-caring",
+      "C) Adapted Child — I comply and please even when I shouldn't",
+      "D) Adult — I feel fairly grounded in most situations"
     ],
-    videoLink: "https://www.youtube.com/embed/kzvm1m8zq5g",
-    videoNote: "How safe relationships release oxytocin, build belonging and support regulation"
+    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
+    videoNote: "Why the ego feeds on conflict, drama and being right"
   },
   {
     session: 10,
@@ -159,18 +159,18 @@ const sessionData = [
   },
   {
     session: 11,
-    title: "Why your ego thrives on conflict",
+    title: "The power of relationships",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
+    reflectionQ: "In an honest moment — when someone is talking to you, what percentage of the time are you fully present rather than forming your response?",
     reflectionOpts: [
-      "A) Critical Parent — I can hear myself getting sharp or judgemental",
-      "B) Nurturing Parent — I tend toward rescue and over-caring",
-      "C) Adapted Child — I comply and please even when I shouldn't",
-      "D) Adult — I feel fairly grounded in most situations"
+      "A) Mostly present — I genuinely find it easy to listen",
+      "B) About half and half — I drift but come back",
+      "C) Probably mostly composing my response if I'm honest",
+      "D) It depends entirely on who is talking and whether I'm stressed"
     ],
-    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
-    videoNote: "Why the ego feeds on conflict, drama and being right"
+    videoLink: "https://www.youtube.com/embed/kzvm1m8zq5g",
+    videoNote: "How safe relationships release oxytocin, build belonging and support regulation"
   },
   {
     session: 12,
