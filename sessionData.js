@@ -206,7 +206,7 @@ const sessionData = [
   },
   {
     session: 14,
-    title: "What is metacognition?",
+    title: "Smart Learning",
     theme: "Reason",
     tier: 3,
     reflectionQ: "When did you last genuinely think about how you were thinking — not just what you needed to do, but how you were going to approach it?",
@@ -216,8 +216,8 @@ const sessionData = [
       "C) Rarely — I tend to just get on with things",
       "D) This concept makes me realise I don't do it as much as I thought"
     ],
-    videoLink: null,
-    videoNote: "Source video on metacognition and self-regulated learning — EEF"
+    videoLink: "https://www.youtube.com/embed/jBbpyWEk4kw",
+    videoNote: "Smart Learning School — Introduction"
   },
   {
     session: 15,
