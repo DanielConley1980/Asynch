@@ -1,4 +1,4 @@
-// Full 41-session programme data
+// Full 29-session programme data
 // Themes: "Regulate" (pink), "Relate" (yellow), "Reason" (green)
 // Each session: { session, title, theme, tier, reflectionQ, reflectionOpts, videoLink, videoNote }
 // videoLink: YouTube embed URL — null if video still needs sourcing
@@ -96,7 +96,7 @@ const sessionData = [
     videoNote: "Introduction to mindfulness — present-moment awareness as a regulation tool"
   },
 
-  // ─── TIER 2: RELATE (sessions 7–24) ─────────────────────────────────────
+  // ─── TIER 2: RELATE (sessions 7–12) ─────────────────────────────────────
   {
     session: 7,
     title: "Why relating comes next",
@@ -187,190 +187,10 @@ const sessionData = [
     videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
     videoNote: "Relational practice in everyday classroom interactions"
   },
+
+  // ─── TIER 3: REASON (sessions 13–29) ─────────────────────────────────────
   {
     session: 13,
-    title: "Strokes & recognition",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "When did someone last make you feel genuinely seen at work — and what did they actually do or say?",
-    reflectionOpts: [
-      "A) Recently — I can think of a specific moment",
-      "B) A while ago — it doesn't happen as often as it should",
-      "C) I find it hard to receive recognition even when it's given",
-      "D) I'm not sure — I don't notice strokes much either way"
-    ],
-    videoLink: "https://www.youtube.com/embed/M1dlEocp_Yo",
-    videoNote: "Recognition, strokes and human connection"
-  },
-  {
-    session: 14,
-    title: "My ego under stress",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Be honest — when do you most lose yourself at work? When does the 'real you' get replaced by a pattern on autopilot?",
-    reflectionOpts: [
-      "A) When I feel undermined or unfairly criticised",
-      "B) When I'm exhausted and haven't got reserves",
-      "C) When I feel responsible for something I can't control",
-      "D) I'm fairly consistent — I don't feel like I lose myself much"
-    ],
-    videoLink: null,
-    videoNote: "Source video on ego, mindfulness and the observing self — Eckhart Tolle"
-  },
-  {
-    session: 15,
-    title: "The Drama Triangle",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Which role do you most recognise in yourself when a student is struggling?",
-    reflectionOpts: [
-      "A) Rescuer — I find it hard not to take the problem on",
-      "B) Persecutor — I get frustrated when the support I offer isn't taken up",
-      "C) I move between them depending on the situation",
-      "D) I think I mostly manage to stay outside the triangle"
-    ],
-    videoLink: null,
-    videoNote: "Source video on the Karpman Drama Triangle"
-  },
-  {
-    session: 16,
-    title: "Family-school partnership: what works",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Think of a family you find hardest to engage. What do you think the barrier actually is — for them?",
-    reflectionOpts: [
-      "A) Previous negative experiences of school — their own or their child's",
-      "B) Practical barriers — time, language, transport, work",
-      "C) Distrust of authority or professional systems",
-      "D) I genuinely don't know — I haven't found a way in yet"
-    ],
-    videoLink: null,
-    videoNote: "Source video on family engagement principles and the ISAP approach"
-  },
-  {
-    session: 17,
-    title: "Pre-mentalising & curiosity mindset",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "In the heat of a difficult moment — how often are you genuinely curious about what's driving the other person, versus just reacting?",
-    reflectionOpts: [
-      "A) Mostly curious — I try to understand before I respond",
-      "B) It depends — easier with students I know, harder with strangers",
-      "C) Honestly, mostly reacting — curiosity comes later when I reflect",
-      "D) I'm curious in theory but it's hard to access in the actual moment"
-    ],
-    videoLink: null,
-    videoNote: "Source video on mentalisation — Peter Fonagy / Anna Freud Centre"
-  },
-  {
-    session: 18,
-    title: "Executive function & the 8 skills",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Which executive function skill do you find hardest to support in students — and which one are you least certain you fully have yourself?",
-    reflectionOpts: [
-      "A) Impulse control — in students and honestly sometimes in me",
-      "B) Flexible thinking — I can be more rigid than I'd like",
-      "C) Working memory — I forget things and I see students struggle with it",
-      "D) Emotional regulation — the hardest one to teach or model"
-    ],
-    videoLink: null,
-    videoNote: "Source video on executive function and the developing brain"
-  },
-  {
-    session: 19,
-    title: "MHFA: checking in with others",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "If you were struggling with your mental health, which of these would you be most likely to do?",
-    reflectionOpts: [
-      "A) Tell someone I trusted at work",
-      "B) Tell someone close to me outside work",
-      "C) Try to manage it privately and get on with things",
-      "D) I'm not sure — it depends on the severity"
-    ],
-    videoLink: null,
-    videoNote: "Source: MHFA England awareness video or equivalent"
-  },
-  {
-    session: 20,
-    title: "Boundaries in helping relationships",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "When does caring for others most easily tip into carrying too much for them?",
-    reflectionOpts: [
-      "A) When I feel like I'm the only one who really understands their situation",
-      "B) When there's no one else to step in",
-      "C) When I know setting a limit will disappoint them",
-      "D) I think I manage my limits reasonably well most of the time"
-    ],
-    videoLink: null,
-    videoNote: "Source video on healthy boundaries and the helping relationship"
-  },
-  {
-    session: 21,
-    title: "The practice of gratitude",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "At the end of a hard day, where does your attention naturally go?",
-    reflectionOpts: [
-      "A) What went wrong — I replay and analyse",
-      "B) What's waiting tomorrow — I'm already there",
-      "C) I'm usually too tired to reflect at all",
-      "D) I try to land on something that went well before I sleep"
-    ],
-    videoLink: null,
-    videoNote: "Source video on gratitude practice and the negativity bias"
-  },
-  {
-    session: 22,
-    title: "Building a peer support culture",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "How psychologically safe does your team feel right now — could you admit a mistake to a colleague without it costing you something?",
-    reflectionOpts: [
-      "A) Yes — our team feels genuinely safe for that",
-      "B) With some colleagues, not all",
-      "C) Not really — there are risks to being that open",
-      "D) I haven't thought about it consciously but now I'm not sure"
-    ],
-    videoLink: null,
-    videoNote: "Source video on psychological safety — Amy Edmondson"
-  },
-  {
-    session: 23,
-    title: "Brain, ego states & communication",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Now that you can see the RRR triangle and the PAC model side by side — which crossing between them explains the most about a difficult relationship you've had at work?",
-    reflectionOpts: [
-      "A) I was regulated but the other person wasn't — and I couldn't bridge it",
-      "B) I was dysregulated and that pulled me into Parent or Child",
-      "C) We were both dysregulated — there was no Adult in the room",
-      "D) I'm seeing a past situation differently now — the models reframe it"
-    ],
-    videoLink: null,
-    videoNote: "Integration: neurosequential model meets Transactional Analysis"
-  },
-  {
-    session: 24,
-    title: "Term 2 review: the Relate tier",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "What single thing from the Relate tier will most change how you show up for someone who is struggling?",
-    reflectionOpts: [
-      "A) How I listen — less fixing, more presence",
-      "B) How I notice my own ego state before I respond",
-      "C) How I think about families — with more curiosity and fewer assumptions",
-      "D) How I understand the Drama Triangle and my role within it"
-    ],
-    videoLink: null,
-    videoNote: "Consolidation — use student/family voice or highlights from sessions 16–32"
-  },
-
-  // ─── TIER 3: REASON (sessions 25–41) ─────────────────────────────────────
-  {
-    session: 25,
     title: "Why reasoning comes last",
     theme: "Reason",
     tier: 3,
@@ -385,7 +205,7 @@ const sessionData = [
     videoNote: "Source video on cortex, executive function and the last-online-first-offline principle"
   },
   {
-    session: 26,
+    session: 14,
     title: "What is metacognition?",
     theme: "Reason",
     tier: 3,
@@ -400,7 +220,7 @@ const sessionData = [
     videoNote: "Source video on metacognition and self-regulated learning — EEF"
   },
   {
-    session: 27,
+    session: 15,
     title: "The illusion of mastery",
     theme: "Reason",
     tier: 3,
@@ -415,7 +235,7 @@ const sessionData = [
     videoNote: "Source video on retrieval practice and the testing effect — cognitive science"
   },
   {
-    session: 28,
+    session: 16,
     title: "Am I ready to learn?",
     theme: "Reason",
     tier: 3,
@@ -430,7 +250,7 @@ const sessionData = [
     videoNote: "Source video on readiness, regulation and learning states"
   },
   {
-    session: 29,
+    session: 17,
     title: "Choosing the right strategy",
     theme: "Reason",
     tier: 3,
@@ -445,7 +265,7 @@ const sessionData = [
     videoNote: "Source video on retrieval practice, spaced learning and interleaving"
   },
   {
-    session: 30,
+    session: 18,
     title: "How to practise: the right kind of effort",
     theme: "Reason",
     tier: 3,
@@ -460,7 +280,7 @@ const sessionData = [
     videoNote: "Source video on deliberate practice and desirable difficulty — Robert Bjork"
   },
   {
-    session: 31,
+    session: 19,
     title: "Smart Learning in the ISAP classroom",
     theme: "Reason",
     tier: 3,
@@ -475,7 +295,7 @@ const sessionData = [
     videoNote: "Source video on metacognitive coaching in alternative provision"
   },
   {
-    session: 32,
+    session: 20,
     title: "Teaching for lost learning",
     theme: "Reason",
     tier: 3,
@@ -490,7 +310,7 @@ const sessionData = [
     videoNote: "Source video on reintegration, catch-up pedagogy and reengagement"
   },
   {
-    session: 33,
+    session: 21,
     title: "Growth mindset deepdive",
     theme: "Reason",
     tier: 3,
@@ -505,7 +325,7 @@ const sessionData = [
     videoNote: "Source video on growth mindset — Carol Dweck"
   },
   {
-    session: 34,
+    session: 22,
     title: "Stress, scripts & the reasoning brain",
     theme: "Reason",
     tier: 3,
@@ -521,7 +341,7 @@ const sessionData = [
     videoNote: "Source video on TA Drivers and their physiological cost"
   },
   {
-    session: 35,
+    session: 23,
     title: "Proactive self-care & protecting your joy",
     theme: "Reason",
     tier: 3,
@@ -536,7 +356,7 @@ const sessionData = [
     videoNote: "Source video on proactive wellbeing and energy management"
   },
   {
-    session: 36,
+    session: 24,
     title: "Managing compassion fatigue",
     theme: "Reason",
     tier: 3,
@@ -551,7 +371,7 @@ const sessionData = [
     videoNote: "Source video on compassion fatigue, secondary trauma and sustainable practice"
   },
   {
-    session: 37,
+    session: 25,
     title: "Critical incident deepdive",
     theme: "Reason",
     tier: 3,
@@ -566,7 +386,7 @@ const sessionData = [
     videoNote: "BBC3 'An Incident in School' — source/license required (second exposure: full RRR + TA analysis)"
   },
   {
-    session: 38,
+    session: 26,
     title: "Confidence in supporting others",
     theme: "Reason",
     tier: 3,
@@ -581,7 +401,7 @@ const sessionData = [
     videoNote: "Source: MHFA England confidence-building or case study video"
   },
   {
-    session: 39,
+    session: 27,
     title: "Professional goals & personal wellness plan",
     theme: "Reason",
     tier: 3,
@@ -596,7 +416,7 @@ const sessionData = [
     videoNote: "Source video on values-based goal setting and professional identity"
   },
   {
-    session: 40,
+    session: 28,
     title: "Letter to my future self",
     theme: "Reason",
     tier: 3,
@@ -611,7 +431,7 @@ const sessionData = [
     videoNote: "Guided reflection — no external video needed; provide quiet music and writing time"
   },
   {
-    session: 41,
+    session: 29,
     title: "Celebration, affirmation & the golden thread",
     theme: "Reason",
     tier: 3,

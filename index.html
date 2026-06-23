@@ -952,16 +952,16 @@
             <header>
                 <div class="eyebrow">Inclusion Base · Staff Development</div>
                 <h1 class="title">Asynchronous Programme</h1>
-                <p class="subtitle">A 41-session asynchronous programme for Inclusion Base staff — structured around the Regulate → Relate → Reason triangle, mirroring how the brain develops and recovers. Each tier must be secure before the next can be reached.</p>
+                <p class="subtitle">A 29-session asynchronous programme for Inclusion Base staff — structured around the Regulate → Relate → Reason triangle, mirroring how the brain develops and recovers. Each tier must be secure before the next can be reached.</p>
                 <div class="stat-row">
-                    <div class="stat"><b>41</b><span>Sessions</span></div>
+                    <div class="stat"><b>29</b><span>Sessions</span></div>
                     <div class="stat"><b>3</b><span>Terms</span></div>
                     <div class="stat"><b>3</b><span>Tiers</span></div>
                 </div>
                 <div class="cert-banner" id="cert-banner">
                     <div class="cb-progress">
                         <div class="cb-bar"><span id="cb-fill"></span></div>
-                        <span class="cb-text" id="cb-text">0 of 41 sessions gold</span>
+                        <span class="cb-text" id="cb-text">0 of 29 sessions gold</span>
                     </div>
                     <button class="cert-btn" id="cert-btn" type="button" disabled>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 01-8 0V4z"/><path d="M8 5.5H5.5A1.5 1.5 0 004 7c0 1.9 1.6 3 4 3"/><path d="M16 5.5h2.5A1.5 1.5 0 0120 7c0 1.9-1.6 3-4 3"/><path d="M12 13v3"/><path d="M9.5 20h5l-.5-4h-4z"/></svg>
@@ -985,7 +985,7 @@
                             <div class="ts-text">
                                 <p class="ts-name">Reason</p>
                                 <p class="ts-region">Tier 3 &middot; Cortex</p>
-                                <p class="ts-desc">Once we're regulated and related, the cortex can reason, reflect and plan.</p>
+                                <p class="ts-desc">With foundational needs met, the cortex can reason, reflect and plan.</p>
                             </div>
                         </div>
                     </div>
@@ -1041,12 +1041,12 @@
 
             <section class="panel">
                 <h3>Programme Overview</h3>
-                <p class="muted">41 sessions distributed across three tiers — each building on the last. Regulate the nervous system first, then build relationship, then develop reasoning and metacognition.</p>
+                <p class="muted">29 sessions distributed across three tiers — each building on the last. Regulate the nervous system first, then build relationship, then develop reasoning and metacognition.</p>
                 <div class="chart-wrap">
                     <div class="chart-container">
                         <canvas id="themesChart"></canvas>
                         <div class="chart-center">
-                            <b>41</b>
+                            <b>29</b>
                             <span>Sessions</span>
                         </div>
                     </div>
@@ -1337,11 +1337,10 @@
                     const key = ['A','B','C','D'][oi];
                     const optText = opt.replace(/^[A-D]\)\s*/, '');
                     let cls = '';
-                    if (completed && prevAns) {
+                    // Once an attempt is graded (passed or not), always mark the correct
+                    // answer green and the chosen-but-wrong answer red.
+                    if (!fresh && prevAns) {
                         if (key === q.answer) cls = 'correct';
-                        else if (key === prevAns && prevAns !== q.answer) cls = 'wrong';
-                    } else if (!fresh && prevAns && prevAns !== q.answer) {
-                        if (key === q.answer) cls = 'reveal-correct';
                         else if (key === prevAns) cls = 'wrong';
                     }
                     const sel = (!completed && !prevAns) ? '' : (key === (prevAns || '') ? ' selected' : '');
