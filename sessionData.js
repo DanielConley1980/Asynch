@@ -206,7 +206,7 @@ const sessionData = [
   },
   {
     session: 14,
-    title: "Smart Learning: What's metacognition?",
+    title: "Smart Learning: Metacognition",
     theme: "Reason",
     tier: 3,
     reflectionQ: "When did you last genuinely think about how you were thinking — not just what you needed to do, but how you were going to approach it?",

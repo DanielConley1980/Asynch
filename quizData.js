@@ -133,7 +133,7 @@ const quizData = [
     ]
   },
   {
-    session: 14, title: "Smart Learning: What's metacognition?",
+    session: 14, title: "Smart Learning: Metacognition",
     questions: [
       { q: "What is the central aim of the Smart Learning approach?", opts: ["A) To help students get through their workload as fast as possible, finishing tasks quickly so they have more free time afterwards", "B) To apply research on how the brain retains information, swapping ineffective habits for evidence-based strategies", "C) To increase the total number of hours spent revising each week", "D) To rank students by academic ability"], answer: "B", callback: false },
       { q: "Smart Learning organises the educational process into three distinct stages. These are:", opts: ["A) Preparing the mind, engaging with new material, and reinforcing knowledge through recall", "B) Reading the material, writing detailed notes on it, and then testing yourself repeatedly until exam day", "C) Planning, revising, and resting", "D) Listening, note-taking, and memorising"], answer: "A", callback: false },
