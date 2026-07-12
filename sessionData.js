@@ -236,18 +236,18 @@ const sessionData = [
   },
   {
     session: 16,
-    title: "Am I ready to learn?",
+    title: "Emotion Coaching",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "When you sit down with a student to do some focused work and they seem completely unavailable — what's your first instinct?",
+    reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
     reflectionOpts: [
-      "A) Try to engage them differently — change my approach",
-      "B) Check in on how they are before we start",
-      "C) Carry on — they need to learn to engage even when they're not feeling it",
-      "D) It depends on the student and what I know about their day"
+      "A) I noticed the feeling and tried to understand what was underneath it",
+      "B) I focused on the behaviour first — correcting it before addressing anything emotional",
+      "C) I felt for them, but wasn't sure how to help them name what they were feeling",
+      "D) I held a firm boundary, even though I could see there was something more going on"
     ],
-    videoLink: null,
-    videoNote: "Source video on readiness, regulation and learning states"
+    videoLink: "https://www.youtube.com/embed/7KJa32r07xk",
+    videoNote: "Emotion Coaching — the 5-step model: notice, connect, listen & validate, help label, set limits"
   },
   {
     session: 17,
