@@ -266,18 +266,18 @@ const sessionData = [
   },
   {
     session: 18,
-    title: "How to practise: the right kind of effort",
+    title: "Kintsugi: the golden thread",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "When learning something new yourself — do you lean toward comfortable practice or do you seek out the stretch that feels difficult?",
+    reflectionQ: "Kintsugi mends broken pottery with gold, making the break itself part of the beauty — not something hidden. Where in your work this year has a break — a failure, a crisis, a hard year with a student or family — become something you're now genuinely proud of, rather than something you'd erase if you could?",
     reflectionOpts: [
-      "A) Comfortable practice — I tend to consolidate what I know",
-      "B) Deliberate stretch — I seek out the edge of my competence",
-      "C) It varies — I oscillate between both",
-      "D) I haven't thought about my own learning practice in those terms before"
+      "A) A relationship that broke and was repaired — and the repair itself taught me something",
+      "B) A moment I felt like I'd failed, that turned out to be exactly what someone needed",
+      "C) A student or family I didn't give up on when it would have been easier to",
+      "D) I'm still in the crack — I haven't reached the gold yet, and that's honest too"
     ],
-    videoLink: null,
-    videoNote: "Source video on deliberate practice and desirable difficulty — Robert Bjork"
+    videoLink: "https://www.youtube.com/embed/EBUTQkaSSTY",
+    videoNote: "Kintsugi philosophy introduction — beauty in imperfection and chaos; the golden thread is the staff; students are more beautiful for having survived the cracks"
   },
   {
     session: 19,
