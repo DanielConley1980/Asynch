@@ -206,18 +206,18 @@ const sessionData = [
   },
   {
     session: 14,
-    title: "Smart Learning: Metacognition",
+    title: "Emotion Coaching",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "When did you last genuinely think about how you were thinking — not just what you needed to do, but how you were going to approach it?",
+    reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
     reflectionOpts: [
-      "A) Recently — I'm fairly reflective about my own approach",
-      "B) Occasionally — when something isn't working and I have to change tack",
-      "C) Rarely — I tend to just get on with things",
-      "D) This concept makes me realise I don't do it as much as I thought"
+      "A) I noticed the feeling and tried to understand what was underneath it",
+      "B) I focused on the behaviour first — correcting it before addressing anything emotional",
+      "C) I felt for them, but wasn't sure how to help them name what they were feeling",
+      "D) I held a firm boundary, even though I could see there was something more going on"
     ],
-    videoLink: "https://www.youtube.com/embed/jBbpyWEk4kw",
-    videoNote: "Smart Learning School — Introduction"
+    videoLink: "https://www.youtube.com/embed/7KJa32r07xk",
+    videoNote: "Emotion Coaching — notice, connect, listen & validate, help label, set limits"
   },
   {
     session: 15,
@@ -236,18 +236,18 @@ const sessionData = [
   },
   {
     session: 16,
-    title: "Emotion Coaching",
+    title: "Smart Learning: Metacognition",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
+    reflectionQ: "When did you last genuinely think about how you were thinking — not just what you needed to do, but how you were going to approach it?",
     reflectionOpts: [
-      "A) I noticed the feeling and tried to understand what was underneath it",
-      "B) I focused on the behaviour first — correcting it before addressing anything emotional",
-      "C) I felt for them, but wasn't sure how to help them name what they were feeling",
-      "D) I held a firm boundary, even though I could see there was something more going on"
+      "A) Recently — I'm fairly reflective about my own approach",
+      "B) Occasionally — when something isn't working and I have to change tack",
+      "C) Rarely — I tend to just get on with things",
+      "D) This concept makes me realise I don't do it as much as I thought"
     ],
-    videoLink: "https://www.youtube.com/embed/7KJa32r07xk",
-    videoNote: "Emotion Coaching — the 5-step model: notice, connect, listen & validate, help label, set limits"
+    videoLink: "https://www.youtube.com/embed/jBbpyWEk4kw",
+    videoNote: "Smart Learning School — Introduction"
   },
   {
     session: 17,
