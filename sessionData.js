@@ -1,4 +1,4 @@
-// Full 29-session programme data
+// Full 18-session programme data
 // Themes: "Regulate" (pink), "Relate" (yellow), "Reason" (green)
 // Each session: { session, title, theme, tier, reflectionQ, reflectionOpts, videoLink, videoNote }
 // videoLink: YouTube embed URL — null if video still needs sourcing
@@ -129,18 +129,18 @@ const sessionData = [
   },
   {
     session: 9,
-    title: "Why your ego thrives on conflict",
+    title: "Relational practice in the classroom",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
+    reflectionQ: "Think of a recent staffroom conversation that didn't go the way you hoped. What do you think was really going on underneath it?",
     reflectionOpts: [
-      "A) Critical Parent — I can hear myself getting sharp or judgemental",
-      "B) Nurturing Parent — I tend toward rescue and over-caring",
-      "C) Adapted Child — I comply and please even when I shouldn't",
-      "D) Adult — I feel fairly grounded in most situations"
+      "A) We were talking at crossed purposes — different ego states",
+      "B) One of us was stressed and it contaminated the exchange",
+      "C) There was a hidden agenda — things we weren't saying directly",
+      "D) It was probably fine — I'm overthinking it"
     ],
-    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
-    videoNote: "Why the ego feeds on conflict, drama and being right"
+    videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
+    videoNote: "Relational practice in everyday classroom interactions"
   },
   {
     session: 10,
@@ -174,21 +174,21 @@ const sessionData = [
   },
   {
     session: 12,
-    title: "Relational practice in the classroom",
+    title: "Why your ego thrives on conflict",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "Think of a recent staffroom conversation that didn't go the way you hoped. What do you think was really going on underneath it?",
+    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
     reflectionOpts: [
-      "A) We were talking at crossed purposes — different ego states",
-      "B) One of us was stressed and it contaminated the exchange",
-      "C) There was a hidden agenda — things we weren't saying directly",
-      "D) It was probably fine — I'm overthinking it"
+      "A) Critical Parent — I can hear myself getting sharp or judgemental",
+      "B) Nurturing Parent — I tend toward rescue and over-caring",
+      "C) Adapted Child — I comply and please even when I shouldn't",
+      "D) Adult — I feel fairly grounded in most situations"
     ],
-    videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
-    videoNote: "Relational practice in everyday classroom interactions"
+    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
+    videoNote: "Why the ego feeds on conflict, drama and being right"
   },
 
-  // ─── TIER 3: REASON (sessions 13–29) ─────────────────────────────────────
+  // ─── TIER 3: REASON (sessions 13–18) ─────────────────────────────────────
   {
     session: 13,
     title: "Why reasoning comes last",
@@ -278,172 +278,6 @@ const sessionData = [
     ],
     videoLink: "https://www.youtube.com/embed/EBUTQkaSSTY",
     videoNote: "Kintsugi philosophy introduction — beauty in imperfection and chaos; the golden thread is the staff; students are more beautiful for having survived the cracks"
-  },
-  {
-    session: 19,
-    title: "Smart Learning in the ISAP classroom",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "How do you talk about learning itself — the process of it — with the students you support?",
-    reflectionOpts: [
-      "A) Quite explicitly — I explain why we do things the way we do",
-      "B) Implicitly — I model it but don't always name it",
-      "C) Rarely — our focus is usually on the content rather than the process",
-      "D) I hadn't thought about making the process visible before"
-    ],
-    videoLink: null,
-    videoNote: "Source video on metacognitive coaching in alternative provision"
-  },
-  {
-    session: 20,
-    title: "Teaching for lost learning",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What's the most honest thing you believe about a student who has missed two years of school — not professionally, but genuinely?",
-    reflectionOpts: [
-      "A) That the gap is real but absolutely bridgeable with the right support",
-      "B) That it depends enormously on the student and the reasons for the absence",
-      "C) That some of what was missed cannot be recovered in time for qualifications",
-      "D) I'm still working out what I actually believe about this"
-    ],
-    videoLink: null,
-    videoNote: "Source video on reintegration, catch-up pedagogy and reengagement"
-  },
-  {
-    session: 21,
-    title: "Growth mindset deepdive",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "Where do you have a fixed mindset — a quiet belief that you're just not the sort of person who can do a particular thing?",
-    reflectionOpts: [
-      "A) Something creative — art, music, that kind of thing",
-      "B) Something technical — data, spreadsheets, systems",
-      "C) Something relational — public speaking, difficult conversations",
-      "D) I genuinely believe I can grow in most areas if I try"
-    ],
-    videoLink: null,
-    videoNote: "Source video on growth mindset — Carol Dweck"
-  },
-  {
-    session: 22,
-    title: "Stress, scripts & the reasoning brain",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "Which TA Driver do you recognise most in yourself — and what does it cost you?",
-    reflectionOpts: [
-      "A) Be Strong — I find it very hard to show I'm struggling",
-      "B) Please Others — I over-adapt and lose sight of my own needs",
-      "C) Try Hard — I put in excessive effort even when it's not needed",
-      "D) Be Perfect — I hold myself to standards that exhaust me",
-      // Note: 5th option possible but opts array kept at 4 for consistency
-    ],
-    videoLink: null,
-    videoNote: "Source video on TA Drivers and their physiological cost"
-  },
-  {
-    session: 23,
-    title: "Proactive self-care & protecting your joy",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What is the thing you most reliably let go of when work gets hard — the thing that gives you joy or restoration — and how long has it been gone?",
-    reflectionOpts: [
-      "A) Physical — movement, sport, being outside",
-      "B) Creative — music, making, writing",
-      "C) Social — time with people I love or feel like myself with",
-      "D) Quiet — solitude, stillness, just not being needed for a while"
-    ],
-    videoLink: null,
-    videoNote: "Source video on proactive wellbeing and energy management"
-  },
-  {
-    session: 24,
-    title: "Managing compassion fatigue",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "Right now — honestly — how full is your tank?",
-    reflectionOpts: [
-      "A) Quite full — I feel resourced and sustained",
-      "B) Half — I'm managing but not thriving",
-      "C) Running low — I'm aware of depletion but pushing through",
-      "D) Near empty — I'm not sure how sustainable this is"
-    ],
-    videoLink: null,
-    videoNote: "Source video on compassion fatigue, secondary trauma and sustainable practice"
-  },
-  {
-    session: 25,
-    title: "Critical incident deepdive",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "Watch the BBC3 clip again — now through all three lenses. What do you see that you couldn't see in session 4?",
-    reflectionOpts: [
-      "A) The regulation failure — the exact moment the lookout system took over",
-      "B) The relational failure — where the transaction crossed and escalated",
-      "C) The reasoning failure — the point at which the cortex was no longer available",
-      "D) All three — I can see the whole chain now"
-    ],
-    videoLink: null,
-    videoNote: "BBC3 'An Incident in School' — source/license required (second exposure: full RRR + TA analysis)"
-  },
-  {
-    session: 26,
-    title: "Confidence in supporting others",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What is the MHFA situation you feel least confident handling — and what specifically do you worry will happen?",
-    reflectionOpts: [
-      "A) Someone disclosing something serious — I worry I'll say the wrong thing",
-      "B) Someone in acute crisis — I worry I'll panic",
-      "C) Someone who denies there's a problem — I worry I'll make it worse by pushing",
-      "D) A colleague rather than a student — it feels harder somehow"
-    ],
-    videoLink: null,
-    videoNote: "Source: MHFA England confidence-building or case study video"
-  },
-  {
-    session: 27,
-    title: "Professional goals & personal wellness plan",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What is one professional goal for next year that connects to something you genuinely value — not just something you think you should want?",
-    reflectionOpts: [
-      "A) Deepening a skill or approach I've started developing this year",
-      "B) Building something — a resource, a relationship, a project",
-      "C) Letting something go — a habit, a pattern, a way of working that doesn't serve me",
-      "D) I'm still figuring out what I actually want — this question feels important"
-    ],
-    videoLink: null,
-    videoNote: "Source video on values-based goal setting and professional identity"
-  },
-  {
-    session: 28,
-    title: "Letter to my future self",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What do you most want to remember about who you are right now — before time and work change you further?",
-    reflectionOpts: [
-      "A) Something I believe that I want to hold onto",
-      "B) Something I've learned this year that has genuinely shifted me",
-      "C) Someone I've been moved by — a student, a family, a colleague",
-      "D) Something I want to do differently that I haven't managed yet"
-    ],
-    videoLink: null,
-    videoNote: "Guided reflection — no external video needed; provide quiet music and writing time"
-  },
-  {
-    session: 29,
-    title: "Celebration, affirmation & the golden thread",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "What is the gold in your crack this year — what break became a site of repair that you are genuinely proud of?",
-    reflectionOpts: [
-      "A) A relationship that broke and was repaired",
-      "B) A moment of failure I learned something essential from",
-      "C) A student or family I didn't give up on when it would have been easier",
-      "D) Something inside me — a shift in how I see myself or this work"
-    ],
-    videoLink: null,
-    videoNote: "Celebration session — student/staff voice, affirmation circle, optional graduation music"
   }
 ];
 
