@@ -129,18 +129,18 @@ const sessionData = [
   },
   {
     session: 9,
-    title: "Relational practice in the classroom",
+    title: "Emotion Coaching",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "Think of a recent staffroom conversation that didn't go the way you hoped. What do you think was really going on underneath it?",
+    reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
     reflectionOpts: [
-      "A) We were talking at crossed purposes — different ego states",
-      "B) One of us was stressed and it contaminated the exchange",
-      "C) There was a hidden agenda — things we weren't saying directly",
-      "D) It was probably fine — I'm overthinking it"
+      "A) I noticed the feeling and tried to understand what was underneath it",
+      "B) I focused on the behaviour first — correcting it before addressing anything emotional",
+      "C) I felt for them, but wasn't sure how to help them name what they were feeling",
+      "D) I held a firm boundary, even though I could see there was something more going on"
     ],
-    videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
-    videoNote: "Relational practice in everyday classroom interactions"
+    videoLink: "https://www.youtube.com/embed/7KJa32r07xk",
+    videoNote: "Emotion Coaching — notice, connect, listen & validate, help label, set limits"
   },
   {
     session: 10,
@@ -206,18 +206,18 @@ const sessionData = [
   },
   {
     session: 14,
-    title: "Emotion Coaching",
+    title: "Practical classroom strategies",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
+    reflectionQ: "Think of a recent staffroom conversation that didn't go the way you hoped. What do you think was really going on underneath it?",
     reflectionOpts: [
-      "A) I noticed the feeling and tried to understand what was underneath it",
-      "B) I focused on the behaviour first — correcting it before addressing anything emotional",
-      "C) I felt for them, but wasn't sure how to help them name what they were feeling",
-      "D) I held a firm boundary, even though I could see there was something more going on"
+      "A) We were talking at crossed purposes — different ego states",
+      "B) One of us was stressed and it contaminated the exchange",
+      "C) There was a hidden agenda — things we weren't saying directly",
+      "D) It was probably fine — I'm overthinking it"
     ],
-    videoLink: "https://www.youtube.com/embed/7KJa32r07xk",
-    videoNote: "Emotion Coaching — notice, connect, listen & validate, help label, set limits"
+    videoLink: "https://www.youtube.com/embed/1kPAzVIe8-E",
+    videoNote: "Relational practice in everyday classroom interactions"
   },
   {
     session: 15,
