@@ -83,7 +83,7 @@ const quizData = [
     ]
   },
   {
-    session: 9, title: "Emotion Coaching 1",
+    session: 9, title: "Emotion Coaching: Intro",
     questions: [
       { q: "Why does Emotion Coaching treat a strong emotional moment as something to lean into, rather than shut down quickly?", opts: ["A) Because it's usually the fastest and most reliable way to end the disruption", "B) Because emotional moments are opportunities for connection and teaching", "C) Because ignoring a pupil's emotions goes against most schools' behaviour policies", "D) Because it guarantees the same behaviour won't happen again in future lessons"], answer: "B", callback: false },
       { q: "The first move in Emotion Coaching is:", opts: ["A) Set limits on the child's behaviour immediately, before it can spread", "B) Notice the child's behaviour and tune in to the emotion beneath it", "C) Help the child to verbally label the emotion they are experiencing", "D) Distract the child with a different activity until the feeling passes"], answer: "B", callback: false },
@@ -93,7 +93,7 @@ const quizData = [
     ]
   },
   {
-    session: 10, title: "Emotion Coaching 2",
+    session: 10, title: "Emotion Coaching: ABC",
     questions: [
       { q: "Where is the evidence of the ABC in the video? Which matching is correct?", opts: ["A) \"I can see that…\" and \"I'm wondering…\" show Acknowledge; holding the limit shows Boundaries; exploring next steps shows Coaching", "B) \"I can see that…\" shows Boundaries; setting the limit shows Coaching; problem-solving what comes next shows Acknowledge", "C) The video only demonstrates Acknowledge — the Boundaries and Coaching steps are left to the adult to improvise", "D) The phrases are general behaviour management techniques that don't map onto the ABC in any reliable way"], answer: "A", callback: false },
       { q: "Emily is over twenty minutes late for her lesson after break. She is wandering the corridors, banging on classroom windows every so often and refusing to be redirected to her classroom or her head of year's office. What does an ABC approach open with?", opts: ["A) A clear instruction: back to class now, or it becomes a head of year matter with consequences attached", "B) Walking alongside her, unhurried, acknowledging first — \"something's making it hard to be in class right now\" — then redirecting", "C) Radioing for senior staff so she can be removed from the corridor before more lessons are disturbed", "D) Following her silently at a distance until she runs out of steam and returns of her own accord"], answer: "B", callback: false },
@@ -103,7 +103,7 @@ const quizData = [
     ]
   },
   {
-    session: 11, title: "Emotion Coaching 3",
+    session: 11, title: "Emotion Coaching: Empathy x Guidance",
     questions: [
       { q: "In the empathy/guidance model, the green quadrant — where Emotion Coaching sits — combines:", opts: ["A) High guidance delivered with firm professional detachment", "B) High empathy with expectations that flex to protect the student", "C) High empathy AND high guidance, held at the same time", "D) Whichever balance of the two best suits the individual student"], answer: "C", callback: false },
       { q: "'You're doing this because you can't be bothered. Detention — and don't bother explaining.' No curiosity, cold, straight to punishment. Which quadrant is this teacher in?", opts: ["A) Disapproving — high guidance, low empathy", "B) Dismissing — high empathy, low guidance", "C) Laissez-Faire — low empathy and low guidance", "D) Emotion Coaching — high in both empathy and guidance"], answer: "A", callback: false },

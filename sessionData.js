@@ -129,7 +129,7 @@ const sessionData = [
   },
   {
     session: 9,
-    title: "Emotion Coaching 1",
+    title: "Emotion Coaching: Intro",
     theme: "Relate",
     tier: 2,
     reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
@@ -144,7 +144,7 @@ const sessionData = [
   },
   {
     session: 10,
-    title: "Emotion Coaching 2",
+    title: "Emotion Coaching: ABC",
     theme: "Relate",
     tier: 2,
     reflectionQ: "Think about how you naturally respond when a student is upset AND breaking a rule at the same time. Which comes first for you, honestly?",
@@ -160,7 +160,7 @@ const sessionData = [
   },
   {
     session: 11,
-    title: "Emotion Coaching 3",
+    title: "Emotion Coaching: Empathy x Guidance",
     theme: "Relate",
     tier: 2,
     graphicLabel: "Empathy × Guidance",
