@@ -103,7 +103,7 @@ const quizData = [
     ]
   },
   {
-    session: 11, title: "Emotion Coaching: Empathy x Guidance",
+    session: 11, title: "Emotion Coaching: Styles",
     questions: [
       { q: "In the empathy/guidance model, the green quadrant — where Emotion Coaching sits — combines:", opts: ["A) High guidance delivered with firm professional detachment", "B) High empathy with expectations that flex to protect the student", "C) High empathy AND high guidance, held at the same time", "D) Whichever balance of the two best suits the individual student"], answer: "C", callback: false },
       { q: "'You're doing this because you can't be bothered. Detention — and don't bother explaining.' No curiosity, cold, straight to punishment. Which quadrant is this teacher in?", opts: ["A) Disapproving — high guidance, low empathy", "B) Dismissing — high empathy, low guidance", "C) Laissez-Faire — low empathy and low guidance", "D) Emotion Coaching — high in both empathy and guidance"], answer: "A", callback: false },
