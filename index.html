@@ -1274,6 +1274,11 @@
 
                     ${reflectHTML}
                     ${videoHTML}
+                    ${s.explainer ? `
+                    <div class="block">
+                        <p class="block-label">After the video</p>
+                        <div class="callout note" style="font-size:14.5px;line-height:1.65;color:var(--text);">${esc(s.explainer)}</div>
+                    </div>` : ''}
 
                     <div class="block" id="quiz-block" data-session="${s.session}"></div>
                 </div>`;
