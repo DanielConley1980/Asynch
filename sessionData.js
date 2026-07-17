@@ -129,7 +129,7 @@ const sessionData = [
   },
   {
     session: 9,
-    title: "Emotion Coaching",
+    title: "Emotion Coaching 1",
     theme: "Relate",
     tier: 2,
     reflectionQ: "Think of a student whose behaviour was clearly being driven by a strong feeling underneath it. In that moment, what did you find yourself doing first?",
@@ -144,6 +144,36 @@ const sessionData = [
   },
   {
     session: 10,
+    title: "Emotion Coaching 2",
+    theme: "Relate",
+    tier: 2,
+    reflectionQ: "Think about how you naturally respond when a student is upset AND breaking a rule at the same time. Which comes first for you, honestly?",
+    reflectionOpts: [
+      "A) The feeling — I tend to deal with the emotion and sometimes let the behaviour slide",
+      "B) The behaviour — I address the rule first and the feeling later, if at all",
+      "C) Both at once — though it can come out muddled",
+      "D) It depends entirely on the student and the day"
+    ],
+    videoLink: null,
+    videoNote: "Source video introducing the ABC of Emotion Coaching — Acknowledge, Boundaries, Coaching"
+  },
+  {
+    session: 11,
+    title: "Emotion Coaching 3",
+    theme: "Relate",
+    tier: 2,
+    reflectionQ: "Picture the student who tests you most. If their next outburst happened tomorrow, how confident are you that you could hold all three steps — acknowledge, boundary, coach — in the moment?",
+    reflectionOpts: [
+      "A) Confident on acknowledging the feeling — shakier on holding the boundary",
+      "B) Confident on the boundary — shakier on acknowledging first",
+      "C) I can do each step, but not always in that order under pressure",
+      "D) Honestly, in the moment it can all go out of the window"
+    ],
+    videoLink: null,
+    videoNote: "Scenario practice — applying the ABC of Emotion Coaching to real classroom moments"
+  },
+  {
+    session: 12,
     title: "Pears Family School",
     theme: "Relate",
     tier: 2,
@@ -156,36 +186,6 @@ const sessionData = [
     ],
     videoLink: "https://www.youtube.com/embed/7PaQWTNIgaE",
     videoNote: "Source: Pears Foundation / Pears Family School documentary or case study film"
-  },
-  {
-    session: 11,
-    title: "The power of relationships",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "In an honest moment — when someone is talking to you, what percentage of the time are you fully present rather than forming your response?",
-    reflectionOpts: [
-      "A) Mostly present — I genuinely find it easy to listen",
-      "B) About half and half — I drift but come back",
-      "C) Probably mostly composing my response if I'm honest",
-      "D) It depends entirely on who is talking and whether I'm stressed"
-    ],
-    videoLink: "https://www.youtube.com/embed/kzvm1m8zq5g",
-    videoNote: "How safe relationships release oxytocin, build belonging and support regulation"
-  },
-  {
-    session: 12,
-    title: "Why your ego thrives on conflict",
-    theme: "Relate",
-    tier: 2,
-    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
-    reflectionOpts: [
-      "A) Critical Parent — I can hear myself getting sharp or judgemental",
-      "B) Nurturing Parent — I tend toward rescue and over-caring",
-      "C) Adapted Child — I comply and please even when I shouldn't",
-      "D) Adult — I feel fairly grounded in most situations"
-    ],
-    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
-    videoNote: "Why the ego feeds on conflict, drama and being right"
   },
 
   // ─── TIER 3: REASON (sessions 13–18) ─────────────────────────────────────
@@ -221,22 +221,7 @@ const sessionData = [
   },
   {
     session: 15,
-    title: "The illusion of mastery",
-    theme: "Reason",
-    tier: 3,
-    reflectionQ: "Be honest — have you ever felt confident about something at work and then been caught out by how little you actually knew?",
-    reflectionOpts: [
-      "A) Yes — and it was genuinely humbling",
-      "B) Yes — but I caught myself before it became a problem",
-      "C) Occasionally — usually in a new area I thought I understood",
-      "D) I try to flag uncertainty rather than let it become an illusion"
-    ],
-    videoLink: null,
-    videoNote: "Source video on retrieval practice and the testing effect — cognitive science"
-  },
-  {
-    session: 16,
-    title: "Smart Learning: Metacognition",
+    title: "Smart Learning 1",
     theme: "Reason",
     tier: 3,
     reflectionQ: "When did you last genuinely think about how you were thinking — not just what you needed to do, but how you were going to approach it?",
@@ -250,19 +235,34 @@ const sessionData = [
     videoNote: "Smart Learning School — Introduction"
   },
   {
-    session: 17,
-    title: "Choosing the right strategy",
+    session: 16,
+    title: "Smart Learning 2",
     theme: "Reason",
     tier: 3,
-    reflectionQ: "How do you currently help students choose a revision approach — or do they mostly just do what feels familiar?",
+    reflectionQ: "Be honest — have you ever felt confident about something at work and then been caught out by how little you actually knew?",
     reflectionOpts: [
-      "A) I actively teach strategy selection — this is part of my role",
-      "B) I signpost strategies but leave the choice to them",
-      "C) Most students default to re-reading and I haven't changed that much",
-      "D) Strategy instruction isn't really part of what I do"
+      "A) Yes — and it was genuinely humbling",
+      "B) Yes — but I caught myself before it became a problem",
+      "C) Occasionally — usually in a new area I thought I understood",
+      "D) I try to flag uncertainty rather than let it become an illusion"
     ],
-    videoLink: null,
-    videoNote: "Source video on retrieval practice, spaced learning and interleaving"
+    videoLink: "https://smartlearningschool.com/",
+    videoNote: "Explore the Smart Learning School website — how the approach turns brain science into everyday study habits"
+  },
+  {
+    session: 17,
+    title: "Why your ego thrives on conflict",
+    theme: "Reason",
+    tier: 3,
+    reflectionQ: "Which ego state do you recognise most in yourself at work under pressure?",
+    reflectionOpts: [
+      "A) Critical Parent — I can hear myself getting sharp or judgemental",
+      "B) Nurturing Parent — I tend toward rescue and over-caring",
+      "C) Adapted Child — I comply and please even when I shouldn't",
+      "D) Adult — I feel fairly grounded in most situations"
+    ],
+    videoLink: "https://www.youtube.com/embed/Zl2Z2XdSmqE",
+    videoNote: "Why the ego feeds on conflict, drama and being right"
   },
   {
     session: 18,

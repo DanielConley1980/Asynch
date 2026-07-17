@@ -83,7 +83,7 @@ const quizData = [
     ]
   },
   {
-    session: 9, title: "Emotion Coaching",
+    session: 9, title: "Emotion Coaching 1",
     questions: [
       { q: "Why does Emotion Coaching treat a strong emotional moment as something to lean into, rather than shut down quickly?", opts: ["A) Because it's usually the fastest way to end the disruption", "B) Because emotional moments are a chance for connection and teaching, not just a problem to manage", "C) Because ignoring emotion is against school policy", "D) Because it guarantees the behaviour won't happen again"], answer: "B", callback: false },
       { q: "The first move in Emotion Coaching is:", opts: ["A) Set limits on the child's behaviour immediately", "B) Notice the child's behaviour and tune in to the emotion beneath it", "C) Help the child verbally label the emotion", "D) Distract the child until the feeling passes"], answer: "B", callback: false },
@@ -93,33 +93,33 @@ const quizData = [
     ]
   },
   {
-    session: 10, title: "Pears Family School",
+    session: 10, title: "Emotion Coaching 2",
+    questions: [
+      { q: "In the ABC of Emotion Coaching, the three letters stand for:", opts: ["A) Attention, Behaviour, Consequences", "B) Acknowledge, Boundaries, Coaching", "C) Ask, Believe, Correct", "D) Acknowledge, Behaviour, Consistency"], answer: "B", callback: false },
+      { q: "Why does Acknowledge come first?", opts: ["A) It is the quickest of the three steps to deliver", "B) It avoids having to set a limit at all", "C) Naming and validating the feeling settles the student enough for anything else to land", "D) Boundaries are only appropriate for older students"], answer: "C", callback: false },
+      { q: "The Boundaries step rests on the principle that:", opts: ["A) All feelings and all behaviours are acceptable", "B) All feelings are acceptable — but not all behaviours are", "C) Feelings should be corrected before behaviour is addressed", "D) Boundaries should only be set once the student has apologised"], answer: "B", callback: false },
+      { q: "The Coaching (or correction) step is best described as:", opts: ["A) Explaining the sanction the behaviour has earned", "B) Reminding the student of the school rules in detail", "C) A private reprimand delivered once the audience has gone", "D) Working with the student on what they could do differently next time the feeling arrives"], answer: "D", callback: false },
+      { q: "(Reference: Session 9) How does the ABC condense the Emotion Coaching approach from that session?", opts: ["A) It replaces it with a stricter, behaviour-first model", "B) Acknowledge holds the noticing, connecting, listening and labelling; Boundaries and Coaching hold the limit-setting and problem-solving — the same sequence, easier to carry in the moment", "C) It removes the need to validate feelings before setting limits", "D) It is unrelated — ABC comes from a different framework entirely"], answer: "B", callback: 9 }
+    ]
+  },
+  {
+    session: 11, title: "Emotion Coaching 3",
+    questions: [
+      { q: "A pupil sweeps their books off the desk after struggling with a task. Using the ABC, the strongest first response is:", opts: ["A) 'Pick those up now, please — we don't throw things in here'", "B) 'Something about that task has really frustrated you'", "C) 'If that happens again you'll be finishing at break'", "D) Quietly ignoring it so the behaviour isn't reinforced"], answer: "B", callback: false },
+      { q: "'It's OK to feel angry — it's not OK to throw things.' Which steps of the ABC does this single sentence hold together?", opts: ["A) Boundaries and Coaching", "B) Acknowledge and Coaching", "C) Acknowledge and Boundaries", "D) All three at once"], answer: "C", callback: false },
+      { q: "(Reference: Session 1) When is the Coaching step best attempted?", opts: ["A) Immediately, while the incident is fresh in the student's mind", "B) Once the student is regulated again — a dysregulated brain cannot problem-solve", "C) Only in a formal restorative meeting with a senior colleague", "D) The next time the same behaviour happens"], answer: "B", callback: 1 },
+      { q: "The most common way the ABC breaks down in practice is:", opts: ["A) Spending too long on Acknowledge and never reaching the boundary", "B) Setting boundaries that are too firm for the situation", "C) Coaching before the student is ready to hear it", "D) Skipping Acknowledge and jumping straight to the boundary or correction — the student feels unheard and escalates"], answer: "D", callback: false },
+      { q: "(Reference: Sessions 8, 9) In the Acknowledge step, what are you actually doing in empathy/sympathy terms?", opts: ["A) Offering sympathy — reassuring the student it isn't that bad", "B) Offering empathy — sitting with the feeling and communicating that it makes sense, before any fixing or correcting", "C) Staying neutral so the behaviour can be dealt with objectively", "D) Modelling the feelings rules of the classroom"], answer: "B", callback: [8, 9] }
+    ]
+  },
+  {
+    session: 12, title: "Pears Family School",
     questions: [
       { q: "According to the source, what percentage of children who need mental health treatment do not currently receive it?", opts: ["A) 20%", "B) 50%", "C) 80%", "D) 95%"], answer: "C", callback: false },
       { q: "At what age do most adults with mental health issues first begin to show symptoms?", opts: ["A) Before they are 18", "B) After age 21", "C) During early childhood (under 5)", "D) In their late 20s"], answer: "A", callback: false },
       { q: "What is the core hypothesis that makes the Pears Family School model different from mainstream schools?", opts: ["A) Children simply learn better in smaller school buildings", "B) Technology is the key factor in mental health recovery", "C) School change is not sustainable without change at home", "D) Pupils should be taught only by trained researchers"], answer: "C", callback: false },
       { q: "What is a primary benefit of having parents physically present in the school?", opts: ["A) It lets parents take over the teaching duties themselves", "B) Parents see their child in the context of learning", "C) It reduces the cost of providing security at the school", "D) It lets the school finish its classes earlier each day"], answer: "B", callback: false },
       { q: "What is the ultimate goal of merging neuroscience and social science in the new centre?", opts: ["A) To create a school that is entirely automated", "B) To apply discoveries quickly and spread the model widely", "C) To focus only on children who live in London", "D) To replace traditional social work entirely with brain imaging"], answer: "B", callback: false }
-    ]
-  },
-  {
-    session: 11, title: "The power of relationships",
-    questions: [
-      { q: "Why does warm, attuned relational contact help a student regulate?", opts: ["A) It distracts them from whatever is worrying them", "B) It gives the adult far more authority and control over the student", "C) Safe connection releases oxytocin, calming the stress response", "D) It removes the need for any classroom boundaries"], answer: "C", callback: false },
-      { q: "Oxytocin is sometimes called the 'bonding' or 'trust' hormone because it:", opts: ["A) Increases alertness so students concentrate harder", "B) Is released by safe connection and lowers threat", "C) Is only ever released during physical exercise", "D) Removes the need for the cortex to be online"], answer: "B", callback: false },
-      { q: "When a student feels a genuine sense of safety and belonging in school, the most important effect is that:", opts: ["A) They will from then on always behave perfectly", "B) Academic standards for the class can be raised almost straight away", "C) Their nervous system settles, freeing capacity to learn", "D) They no longer need any adult support at all"], answer: "C", callback: false },
-      { q: "How does natural curiosity go hand in hand with relational practice?", opts: ["A) Curiosity is mainly about gathering evidence to justify a consequence", "B) Genuine curiosity — 'what's happening for you?' — signals safety", "C) Curiosity means questioning a student until they comply", "D) Curiosity only matters once a relationship already exists"], answer: "B", callback: false },
-      { q: "(Reference: Session 4) 'Psychological safety' means students feel able to make mistakes, ask for help and be honest. Relational practice builds it because:", opts: ["A) It sets stricter, clearer rules that everyone in the class understands", "B) Consistent, curious, non-judgemental relationships feel safe", "C) It rewards students for taking bold academic risks", "D) It removes all challenge so that nobody can fail"], answer: "B", callback: 4 }
-    ]
-  },
-  {
-    session: 12, title: "Why your ego thrives on conflict",
-    questions: [
-      { q: "Why does a student's defiance in front of the whole class often provoke a stronger reaction in an adult than the same words said privately?", opts: ["A) Public defiance is always a more serious offence than private", "B) The ego feels its status threatened in front of an audience", "C) Students only ever act up to get attention from peers", "D) Private conversations are simply easier to stay calm in"], answer: "B", callback: false },
-      { q: "In a confrontation with a pupil, the strong urge to 'have the last word' is best understood as:", opts: ["A) A reasonable need to check the pupil has understood", "B) The ego seeking to win and reassert itself", "C) An effective way of maintaining authority in the room", "D) A clear sign the adult is staying calm and in control"], answer: "B", callback: false },
-      { q: "An adult who feels they must be 'right' and win the argument with a defiant pupil is most likely to:", opts: ["A) Strengthen the relationship through honesty and openness", "B) Model really good reasoning for the rest of the class", "C) Win the point but damage the relationship and escalate", "D) Help the pupil develop their own debating skills"], answer: "C", callback: false },
-      { q: "'The ego thrives on conflict and pain' means that:", opts: ["A) Some people simply enjoy being difficult with others", "B) The ego strengthens itself through opposition and drama", "C) Conflict is always necessary for genuine personal growth", "D) Pain is the only thing that truly motivates real change"], answer: "B", callback: false },
-      { q: "(Reference: Session 4) When a pupil is publicly defiant, the most effective way to avoid an ego-driven power struggle is to:", opts: ["A) Match their intensity so they know that you mean business", "B) Insist on full compliance before anyone can move on", "C) Step out of the contest and refuse to take the bait", "D) Give an immediate public consequence to restore authority"], answer: "C", callback: 4 }
     ]
   },
   {
@@ -139,21 +139,11 @@ const quizData = [
       { q: "'Plausible anonymity' — for example, 'I'm only waiting for two people now' — works by:", opts: ["A) Publicly naming the off-task pupils so they correct fast", "B) Prompting pupils to self-correct without being named", "C) Ignoring low-level disruption in the room altogether", "D) Issuing an immediate sanction to the whole group"], answer: "B", callback: false },
       { q: "In the 100% Compliance ladder of corrective responses, which should generally come FIRST?", opts: ["A) A quick public corrective that names the pupil", "B) An individual private warning to the pupil", "C) A non-verbal cue, such as a silent gesture", "D) A sanction applied to the pupil straight away"], answer: "C", callback: false },
       { q: "Why does the corrective sequence start with non-verbal and group prompts and keep public, named correction to a minimum?", opts: ["A) Because adults should avoid correcting pupils wherever possible", "B) Because the least-invasive approach protects the relationship", "C) Because public correction is forbidden by school policy", "D) Because non-verbal cues are the only method that works"], answer: "B", callback: false },
-      { q: "(Reference: Session 12) 'Live in the now — today's a fresh start' and 'assume the best' help avoid power struggles because they:", opts: ["A) They lower expectations for pupils who struggled yesterday", "B) They let the adult drop grievances and meet pupils warmly", "C) They mean that past behaviour is never actually addressed", "D) They remove the need for any correction at all in lessons"], answer: "B", callback: 12 }
+      { q: "'Live in the now — today's a fresh start' and 'assume the best' help avoid power struggles because they:", opts: ["A) They lower expectations for pupils who struggled yesterday", "B) They let the adult drop grievances and meet pupils warmly", "C) They mean that past behaviour is never actually addressed", "D) They remove the need for any correction at all in lessons"], answer: "B", callback: false }
     ]
   },
   {
-    session: 15, title: "The illusion of mastery",
-    questions: [
-      { q: "The 'illusion of mastery' occurs because:", opts: ["A) Students deliberately overestimate their knowledge to avoid revision", "B) Exposure to familiar material produces a feeling of fluency that the brain mistakes for durable learning", "C) Teachers provide too much reassurance about performance", "D) Revision methods are poorly taught by schools"], answer: "B", callback: false },
-      { q: "Which best demonstrates the illusion of mastery?", opts: ["A) A student who revises and achieves a good grade", "B) A student who re-reads notes, feels confident, then performs poorly on a test", "C) A student who avoids revision and performs poorly", "D) A student who makes flashcards and tests themselves"], answer: "B", callback: false },
-      { q: "The working memory digit span exercise demonstrates:", opts: ["A) That working memory is unlimited with practice", "B) That working memory has limited capacity, which affects how much can be processed at once", "C) That digit recall is a reliable indicator of general intelligence", "D) That chunking is ineffective as a memory strategy"], answer: "B", callback: false },
-      { q: "Recognising content is NOT the same as being able to recall it. The key difference is:", opts: ["A) Recognition requires less intelligence than recall", "B) Recall requires active retrieval from memory — effortful and strengthening; recognition is passive and produces little memory benefit", "C) Both recognition and recall build equally strong memory traces", "D) Recognition is more reliable in high-stakes assessments"], answer: "B", callback: false },
-      { q: "How does the illusion of mastery connect to working memory from session 27?", opts: ["A) They are separate cognitive concepts with no overlap", "B) Working memory's limited capacity means re-reading fills that capacity with familiarity without building retrieval strength; both point to the same cognitive limitation", "C) Working memory improves with age, making the illusion of mastery less relevant for older students", "D) Executive function and metacognition are entirely different domains"], answer: "B", callback: false }
-    ]
-  },
-  {
-    session: 16, title: "Smart Learning: Metacognition",
+    session: 15, title: "Smart Learning 1",
     questions: [
       { q: "What is the central aim of the Smart Learning approach?", opts: ["A) To help students get through their workload as fast as possible, finishing tasks quickly so they have more free time afterwards", "B) To apply research on how the brain retains information, swapping ineffective habits for evidence-based strategies", "C) To increase the total number of hours spent revising each week", "D) To rank students by academic ability"], answer: "B", callback: false },
       { q: "Smart Learning organises the educational process into three distinct stages. These are:", opts: ["A) Preparing the mind, engaging with new material, and reinforcing knowledge through recall", "B) Reading the material, writing detailed notes on it, and then testing yourself repeatedly until exam day", "C) Planning, revising, and resting", "D) Listening, note-taking, and memorising"], answer: "A", callback: false },
@@ -163,13 +153,23 @@ const quizData = [
     ]
   },
   {
-    session: 17, title: "Choosing the right strategy",
+    session: 16, title: "Smart Learning 2",
     questions: [
-      { q: "'Retrieval practice' involves:", opts: ["A) Re-reading and highlighting notes", "B) Attempting to recall information from memory without looking at the source — the effort of retrieval strengthens the memory trace", "C) Creating visual summaries of learning material", "D) Watching videos to review content"], answer: "B", callback: false },
-      { q: "'Spaced practice' is more effective than massed practice (cramming) because:", opts: ["A) It takes less total time", "B) Spacing study sessions with gaps forces the brain to re-retrieve information, strengthening the neural pathway each time", "C) It is less tiring and more sustainable", "D) It covers more material in the same period"], answer: "B", callback: false },
-      { q: "'Interleaving' — mixing different topics within a study session — is effective because:", opts: ["A) It prevents boredom during long study sessions", "B) It forces the brain to identify which approach applies to each problem — a deeper form of processing than blocked practice", "C) It reduces the total revision time needed", "D) It works best for creative subjects"], answer: "B", callback: false },
-      { q: "For a vocabulary-heavy subject, the most evidence-based recommendation is:", opts: ["A) Re-reading and highlighting key terms", "B) Spaced retrieval practice — testing on vocabulary over increasing intervals", "C) Creating a mind map of all the terms", "D) Writing each term out several times"], answer: "B", callback: false },
-      { q: "(Reference: Sessions 15, 16) How does choosing the right strategy connect to metacognition and the illusion of mastery?", opts: ["A) Strategy selection matters more than being aware of your own thinking", "B) Metacognition lets you notice when a strategy isn't working — as the illusion of mastery shows — and choose a more effective one instead; awareness and strategy selection work together", "C) All strategies work equally well when motivation is high", "D) The illusion of mastery has no bearing on how strategies are chosen"], answer: "B", callback: [15, 16] }
+      { q: "Explore smartlearningschool.com. According to the site, what is the Smart Learning approach built on?", opts: ["A) League table performance and exam technique", "B) Research into how the brain learns and retains information", "C) Extending the school day for more study time", "D) Replacing teachers with online learning tools"], answer: "B", callback: false },
+      { q: "Find the stages of the learning process described on the site. Which set matches?", opts: ["A) Preparing the mind, engaging with new material, and reinforcing knowledge", "B) Reading, note-taking, and highlighting", "C) Planning, revising, and resting", "D) Watching, copying, and repeating"], answer: "A", callback: false },
+      { q: "Which technique does the site champion for making knowledge stick long-term?", opts: ["A) Re-reading notes until they feel completely familiar", "B) Recording lessons and listening back to them", "C) Active recall — retrieving information from memory without looking", "D) Colour-coding notes by topic"], answer: "C", callback: false },
+      { q: "Which familiar revision habits does the site warn feel productive but do little for long-term memory?", opts: ["A) Self-testing and flashcards", "B) Spacing revision out over several weeks", "C) Teaching the material to someone else", "D) Re-reading and highlighting notes"], answer: "D", callback: false },
+      { q: "(Reference: Session 15) The site argues students should swap comfortable habits for evidence-based ones. How does this connect to the metacognition introduced in Smart Learning 1?", opts: ["A) It doesn't — the website is aimed at parents rather than students", "B) Metacognition is exactly the skill of noticing which habits are actually working — you cannot swap a habit you have never examined", "C) Metacognition replaces the need for any particular study technique", "D) The site recommends metacognition only for the highest-attaining students"], answer: "B", callback: 15 }
+    ]
+  },
+  {
+    session: 17, title: "Why your ego thrives on conflict",
+    questions: [
+      { q: "Why does a student's defiance in front of the whole class often provoke a stronger reaction in an adult than the same words said privately?", opts: ["A) Public defiance is always a more serious offence than private", "B) The ego feels its status threatened in front of an audience", "C) Students only ever act up to get attention from peers", "D) Private conversations are simply easier to stay calm in"], answer: "B", callback: false },
+      { q: "In a confrontation with a pupil, the strong urge to 'have the last word' is best understood as:", opts: ["A) A reasonable need to check the pupil has understood", "B) The ego seeking to win and reassert itself", "C) An effective way of maintaining authority in the room", "D) A clear sign the adult is staying calm and in control"], answer: "B", callback: false },
+      { q: "An adult who feels they must be 'right' and win the argument with a defiant pupil is most likely to:", opts: ["A) Strengthen the relationship through honesty and openness", "B) Model really good reasoning for the rest of the class", "C) Win the point but damage the relationship and escalate", "D) Help the pupil develop their own debating skills"], answer: "C", callback: false },
+      { q: "'The ego thrives on conflict and pain' means that:", opts: ["A) Some people simply enjoy being difficult with others", "B) The ego strengthens itself through opposition and drama", "C) Conflict is always necessary for genuine personal growth", "D) Pain is the only thing that truly motivates real change"], answer: "B", callback: false },
+      { q: "(Reference: Session 4) When a pupil is publicly defiant, the most effective way to avoid an ego-driven power struggle is to:", opts: ["A) Match their intensity so they know that you mean business", "B) Insist on full compliance before anyone can move on", "C) Step out of the contest and refuse to take the bait", "D) Give an immediate public consequence to restore authority"], answer: "C", callback: 4 }
     ]
   },
   {
