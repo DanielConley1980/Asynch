@@ -154,8 +154,9 @@ const sessionData = [
       "C) Both at once — though it can come out muddled",
       "D) It depends entirely on the student and the day"
     ],
-    videoLink: null,
-    videoNote: "Source video introducing the ABC of Emotion Coaching — Acknowledge, Boundaries, Coaching"
+    videoLink: "https://www.youtube.com/embed/UfoLcD8aHFA",
+    videoNote: "Emotion Coaching in practice — attunement and the ABC (Acknowledge, Boundaries, Coaching)",
+    explainer: "The ABC model gives you a way to carry Emotion Coaching into the heat of the moment. Acknowledge: notice the feeling underneath the behaviour and name it without judgement — \"I can see that something's really upset you\", \"I'm wondering if something's happened\". Boundaries: hold the limit while keeping the feeling acceptable — all feelings are OK; not all behaviours are. \"It's OK to be angry — it's not OK to kick the lockers.\" Coaching: once the student is settled enough to think, problem-solve together — what could they do differently the next time that feeling arrives? The order matters: acknowledgement comes first, because a student who feels heard is a student who can actually take in the boundary and the coaching."
   },
   {
     session: 11,
