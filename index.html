@@ -1235,7 +1235,8 @@
                     </ul>
                 </div>`;
 
-            const videoHTML = s.videoLink ? `
+            const isYouTube = /youtube\.com|youtu\.be/.test(String(s.videoLink || ''));
+            const videoHTML = s.videoLink ? (isYouTube ? `
                 <div class="block">
                     <p class="block-label">Session Video</p>
                     <div class="video-wrap" data-watch="${watchUrl(s.videoLink)}" data-thumb="${thumbUrl(s.videoLink)}">
@@ -1243,6 +1244,13 @@
                     </div>
                     <a class="video-link" href="${watchUrl(s.videoLink)}" target="_blank" rel="noopener">${extIcon} Watch on YouTube</a>
                 </div>` : `
+                <div class="block">
+                    <p class="block-label">Session Website</p>
+                    <div class="video-wrap">
+                        <iframe src="${s.videoLink}" title="Session website" loading="lazy"></iframe>
+                    </div>
+                    <a class="video-link" href="${s.videoLink}" target="_blank" rel="noopener">${extIcon} Open website in a new tab</a>
+                </div>`) : `
                 <div class="block">
                     <p class="block-label">Session Video</p>
                     <div class="callout" style="color:var(--text-3);font-size:13.5px;">
