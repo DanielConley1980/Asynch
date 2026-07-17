@@ -160,7 +160,7 @@ const sessionData = [
   },
   {
     session: 11,
-    title: "Emotion Coaching: Empathy x Guidance",
+    title: "Emotion Coaching: Styles",
     theme: "Relate",
     tier: 2,
     graphicLabel: "Empathy × Guidance",
