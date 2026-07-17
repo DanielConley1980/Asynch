@@ -163,15 +163,49 @@ const sessionData = [
     title: "Emotion Coaching 3",
     theme: "Relate",
     tier: 2,
-    reflectionQ: "Picture the student who tests you most. If their next outburst happened tomorrow, how confident are you that you could hold all three steps — acknowledge, boundary, coach — in the moment?",
+    graphicLabel: "Empathy × Guidance",
+    graphic: `<svg viewBox="0 0 560 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Empathy and guidance quadrant diagram" style="width:100%;height:auto;font-family:inherit;">
+      <rect x="60" y="20" width="240" height="180" rx="8" fill="rgba(244,67,54,0.14)"/>
+      <rect x="304" y="20" width="240" height="180" rx="8" fill="rgba(76,175,80,0.28)" stroke="rgba(76,175,80,0.8)" stroke-width="2"/>
+      <rect x="60" y="204" width="240" height="180" rx="8" fill="rgba(120,120,120,0.14)"/>
+      <rect x="304" y="204" width="240" height="180" rx="8" fill="rgba(255,193,7,0.16)"/>
+      <text x="180" y="95" text-anchor="middle" font-size="19" font-weight="700" fill="#C62828">Disapproving</text>
+      <text x="180" y="120" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">cold · punitive · no curiosity</text>
+      <text x="180" y="138" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">high guidance, low empathy</text>
+      <text x="424" y="95" text-anchor="middle" font-size="19" font-weight="800" fill="#1B5E20">Emotion Coaching</text>
+      <text x="424" y="120" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">warm AND holds the challenge</text>
+      <text x="424" y="138" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E7D32">high empathy, high guidance</text>
+      <text x="180" y="285" text-anchor="middle" font-size="19" font-weight="700" fill="var(--text-3,#777)">Laissez-Faire</text>
+      <text x="180" y="310" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">disinterested · disengaged</text>
+      <text x="180" y="328" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">low guidance, low empathy</text>
+      <text x="424" y="285" text-anchor="middle" font-size="19" font-weight="700" fill="#B8860B">Dismissing</text>
+      <text x="424" y="310" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">indulges the feeling · removes the challenge</text>
+      <text x="424" y="328" text-anchor="middle" font-size="12.5" fill="var(--text-2,#555)">high empathy, low guidance</text>
+      <line x1="302" y1="14" x2="302" y2="390" stroke="var(--text-3,#999)" stroke-width="1.5"/>
+      <line x1="54" y1="202" x2="550" y2="202" stroke="var(--text-3,#999)" stroke-width="1.5"/>
+      <line x1="60" y1="404" x2="544" y2="404" stroke="var(--text,#333)" stroke-width="2" marker-end="url(#arrowE)"/>
+      <line x1="40" y1="384" x2="40" y2="20" stroke="var(--text,#333)" stroke-width="2" marker-end="url(#arrowG)"/>
+      <defs>
+        <marker id="arrowE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="var(--text,#333)"/></marker>
+        <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="var(--text,#333)"/></marker>
+      </defs>
+      <text x="302" y="425" text-anchor="middle" font-size="13.5" font-weight="700" letter-spacing="2" fill="var(--text,#333)">EMPATHY</text>
+      <text x="20" y="202" text-anchor="middle" font-size="13.5" font-weight="700" letter-spacing="2" fill="var(--text,#333)" transform="rotate(-90 20 202)">GUIDANCE</text>
+    </svg>`,
+    graphicCaption: "Two things are at work in every response to a struggling student: empathy — how well you tune in to the feeling — and guidance — how firmly you hold expectations and direction. High in both, the green quadrant, is Emotion Coaching. High guidance without empathy turns Disapproving: cold, punitive, with no natural curiosity about what's driving the behaviour. High empathy without guidance turns Dismissing: the emotion is indulged, the challenge taken away, expectations and aspirations quietly lowered. Low in both is Laissez-Faire: disinterested, disengaged teaching that shrugs off disengagement. The videos below show the three styles to avoid — watch for what's missing in each.",
+    reflectionQ: "Under real pressure — end of a hard week, a class pushing every button — which quadrant do you honestly drift toward?",
     reflectionOpts: [
-      "A) Confident on acknowledging the feeling — shakier on holding the boundary",
-      "B) Confident on the boundary — shakier on acknowledging first",
-      "C) I can do each step, but not always in that order under pressure",
-      "D) Honestly, in the moment it can all go out of the window"
+      "A) Guidance stays high but my empathy drops — I get colder and more punitive than I'd like",
+      "B) Empathy stays high but my guidance drops — I let expectations slide to keep the peace",
+      "C) Both drop — I disengage and just get through the lesson",
+      "D) I mostly hold both, but it costs me real effort"
     ],
     videoLink: null,
-    videoNote: "Scenario practice — applying the ABC of Emotion Coaching to real classroom moments"
+    videos: [
+      { link: "https://www.youtube.com/embed/XrcLR_rBolc", label: "Video 1 — The Disapproving style" },
+      { link: "https://www.youtube.com/embed/oB1TDE-aFvA", label: "Video 2 — The Dismissing style" },
+      { link: "https://www.youtube.com/embed/WeRZHZ6LAqo", label: "Video 3 — The Laissez-Faire style" }
+    ]
   },
   {
     session: 12,

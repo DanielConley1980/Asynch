@@ -1196,7 +1196,7 @@
                     <div class="wc-meta">
                         <span class="wc-theme">${esc(s.theme)}</span>
                     </div>`;
-                if (s.videoLink) {
+                if (s.videoLink || (Array.isArray(s.videos) && s.videos.length)) {
                     const vl = document.createElement('span');
                     vl.className = 'wc-vidlink';
                     vl.setAttribute('aria-hidden', 'true');
@@ -1235,8 +1235,24 @@
                     </ul>
                 </div>`;
 
+            const graphicHTML = s.graphic ? `
+                <div class="block">
+                    ${s.graphicLabel ? `<p class="block-label">${esc(s.graphicLabel)}</p>` : ''}
+                    <div style="max-width:560px;margin:0 auto;">${s.graphic}</div>
+                    ${s.graphicCaption ? `<div class="callout note" style="font-size:14.5px;line-height:1.65;color:var(--text);margin-top:12px;">${esc(s.graphicCaption)}</div>` : ''}
+                </div>` : '';
+
+            const videosHTML = (Array.isArray(s.videos) && s.videos.length) ? s.videos.map(v => `
+                <div class="block">
+                    <p class="block-label">${esc(v.label || 'Session Video')}</p>
+                    <div class="video-wrap" data-watch="${watchUrl(v.link)}" data-thumb="${thumbUrl(v.link)}">
+                        <iframe src="${embedSrc(v.link)}" title="${esc(v.label || 'Session video')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <a class="video-link" href="${watchUrl(v.link)}" target="_blank" rel="noopener">${extIcon} Watch on YouTube</a>
+                </div>`).join('') : '';
+
             const isYouTube = /youtube\.com|youtu\.be/.test(String(s.videoLink || ''));
-            const videoHTML = s.videoLink ? (isYouTube ? `
+            const videoHTML = videosHTML ? videosHTML : s.videoLink ? (isYouTube ? `
                 <div class="block">
                     <p class="block-label">Session Video</p>
                     <div class="video-wrap" data-watch="${watchUrl(s.videoLink)}" data-thumb="${thumbUrl(s.videoLink)}">
@@ -1272,6 +1288,7 @@
 
                     <div class="detail-divider"></div>
 
+                    ${graphicHTML}
                     ${reflectHTML}
                     ${videoHTML}
                     ${s.explainer ? `
