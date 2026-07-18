@@ -13,7 +13,7 @@
   'use strict';
 
   // ▼▼▼ DEPLOYED APPS SCRIPT WEB-APP URL ▼▼▼
-  var BACKEND_URL = 'https://script.google.com/a/macros/coopacademies.co.uk/s/AKfycbwFkuQxPuMsuQ1-RqGHcKndH6ig4mNtQQ96fCf_5_MR69M9nQxZlqnsWJ-T3eJwF7ys/exec';
+  var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwv2XEg43Hhq7PXPR3EvYwy80kw03yshWgAKaRYuFFt9lUdtOw74XOKYYPiWwHpw63h/exec';
   // ▲▲▲ e.g. 'https://script.google.com/macros/s/AKfy.../exec' ▲▲▲
 
   if (!BACKEND_URL) return; // dormant until configured — site works as-is.
