@@ -19,7 +19,26 @@
   .coop-logo { height: 62px; width: auto; margin: 0 auto 16px; display: block; }
   .name:focus { outline: none; }
   .print-btn { position: fixed; top: 16px; right: 16px; background: linear-gradient(180deg,#ffd877,#f5c451); color: #3a2a06; border: none; border-radius: 9px; padding: 10px 16px; font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 10px 26px -12px rgba(245,196,81,0.6); }
-  @media print { .no-print { display: none !important; } body { padding: 0; background: #08111f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  /* On screen the certificate is dark and rich. When printed or saved as PDF
+     we switch to a clean, ink-light version: white paper, dark text, thin gold
+     accents kept, and the brain glow removed. */
+  @media print {
+    @page { margin: 12mm; }
+    .no-print { display: none !important; }
+    body { padding: 0; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cert { background: #fff !important; border-color: #c9a227 !important; box-shadow: none !important; }
+    .cert-in { border-color: rgba(201,162,39,0.6) !important; }
+    .ey { color: #0e7a70 !important; }
+    .ct, .fval, .fsig { color: #1a2436 !important; }
+    .intro, .body, .ct-sub, .flab, .arrow, .logo-slot .ls-2 { color: #4a5568 !important; }
+    .name { color: #8a5a00 !important; border-bottom-color: #c9a227 !important; }
+    .fline { background: #b9c2d0 !important; }
+    .brain img { filter: none !important; }
+    .b-reg { --tc: #c0392b; } .b-rel { --tc: #2563eb; } .b-rea { --tc: #1e7d34; }
+    .seal { background: #f5c451 !important; border-color: #e6b800 !important; box-shadow: none !important; }
+    .logo-slot { border-color: rgba(90,120,150,0.6) !important; }
+    .logo-slot .ls-1 { color: #2f6fa0 !important; }
+  }
   .ey { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #4fe0d2; font-weight: 600; margin-bottom: 14px; }
   .ct { font-family: 'Newsreader', Georgia, serif; font-size: 28px; font-weight: 500; color: #e9eff7; line-height: 1.1; }
   .ct-sub { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6f86a3; margin-top: 5px; }

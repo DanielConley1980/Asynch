@@ -71,6 +71,14 @@ person on request (right to erasure), just delete their row in the Sheet.
 
 ---
 
+## Completion email
+When a learner finishes all `TOTAL_SESSIONS` (18) sessions, the backend emails
+`CONFIG.ADMIN_EMAIL` (set to `daniel.conley@coopacademies.co.uk`) once — a
+`completedNotified` flag on their row stops it re-sending. To change or turn this
+off, edit `ADMIN_EMAIL` in `Code.gs` and re-deploy a new version. The new
+`completedNotified` column is added to your existing sheet automatically on the
+next save.
+
 ## Notes & limits
 - **Passwords** are stored only as a salted, iterated SHA-256 hash — never in
   plain text. Nobody (including you) can read a user's password; reset is the
