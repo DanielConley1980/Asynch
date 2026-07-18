@@ -13,7 +13,7 @@
   'use strict';
 
   // ▼▼▼ DEPLOYED APPS SCRIPT WEB-APP URL ▼▼▼
-  var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwv2XEg43Hhq7PXPR3EvYwy80kw03yshWgAKaRYuFFt9lUdtOw74XOKYYPiWwHpw63h/exec';
+  var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbyQUptelqPzX_L32NKIivik3Q32qB4IpbDlOUSqQ_FxlzIdKXdLYV-7DM29l-ZTpG6Z/exec';
   // ▲▲▲ e.g. 'https://script.google.com/macros/s/AKfy.../exec' ▲▲▲
 
   if (!BACKEND_URL) return; // dormant until configured — site works as-is.
