@@ -12,8 +12,8 @@
 (function () {
   'use strict';
 
-  // ▼▼▼ PASTE YOUR DEPLOYED APPS SCRIPT WEB-APP URL HERE ▼▼▼
-  var BACKEND_URL = '';
+  // ▼▼▼ DEPLOYED APPS SCRIPT WEB-APP URL ▼▼▼
+  var BACKEND_URL = 'https://script.google.com/a/macros/coopacademies.co.uk/s/AKfycbwFkuQxPuMsuQ1-RqGHcKndH6ig4mNtQQ96fCf_5_MR69M9nQxZlqnsWJ-T3eJwF7ys/exec';
   // ▲▲▲ e.g. 'https://script.google.com/macros/s/AKfy.../exec' ▲▲▲
 
   if (!BACKEND_URL) return; // dormant until configured — site works as-is.
