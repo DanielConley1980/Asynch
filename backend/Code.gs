@@ -29,6 +29,12 @@ const CONFIG = {
   // deletion by purgeOldUsers_() (run it on a time trigger — see DEPLOY.md).
   RETENTION_DAYS: 730,
 
+  // Email this address once a learner completes the whole course. '' = off.
+  ADMIN_EMAIL: 'daniel.conley@coopacademies.co.uk',
+
+  // Number of sessions that counts as completing the course.
+  TOTAL_SESSIONS: 18,
+
   // The public URL of the site, used to build links inside emails.
   // Must end with a trailing slash.
   SITE_URL: 'https://danielconley1980.github.io/Asynch/',
@@ -53,7 +59,7 @@ const HEADERS = [
   'email', 'name', 'passwordHash', 'salt', 'emailConfirmed',
   'confirmToken', 'confirmExpiry', 'resetToken', 'resetExpiry',
   'sessionToken', 'sessionExpiry', 'progress',
-  'consent', 'createdAt', 'updatedAt'
+  'consent', 'createdAt', 'updatedAt', 'completedNotified'
 ];
 
 // ── HTTP entry points ───────────────────────────────────────────────────
@@ -210,10 +216,40 @@ function handleResetPassword_(b) {
 function handleSaveProgress_(b) {
   var u = authed_(b);
   if (!u) return jsonOut_({ ok: false, error: 'Your session has expired. Please log in again.' });
-  u.data.progress = JSON.stringify(b.progress || {});
+  var progress = b.progress || {};
+  u.data.progress = JSON.stringify(progress);
   u.data.updatedAt = new Date().toISOString();
+
+  // Notify the admin the first time a learner finishes the whole course.
+  if (CONFIG.ADMIN_EMAIL &&
+      String(u.data.completedNotified) !== 'yes' &&
+      countCompleted_(progress) >= CONFIG.TOTAL_SESSIONS) {
+    try {
+      MailApp.sendEmail({
+        to: CONFIG.ADMIN_EMAIL,
+        name: CONFIG.EMAIL_SENDER_NAME,
+        subject: 'Course completed: ' + u.data.name,
+        htmlBody:
+          '<p><strong>' + escapeHtml_(u.data.name) + '</strong> (' + escapeHtml_(u.data.email) + ')' +
+          ' has completed all ' + CONFIG.TOTAL_SESSIONS + ' sessions of the programme.</p>' +
+          '<p>Completed: ' + new Date().toLocaleString('en-GB') + '</p>'
+      });
+      u.data.completedNotified = 'yes';
+    } catch (err) {
+      // If the email fails, leave the flag unset so it retries on the next save.
+    }
+  }
+
   writeUser_(u.row, u.data);
   return jsonOut_({ ok: true });
+}
+
+function countCompleted_(progress) {
+  var n = 0;
+  for (var k in progress) {
+    if (progress[k] && progress[k].completed) n++;
+  }
+  return n;
 }
 
 function handleLoadProgress_(b) {
@@ -257,6 +293,10 @@ function getSheet_() {
   if (sh.getLastRow() === 0) {
     sh.appendRow(HEADERS);
     sh.setFrozenRows(1);
+  }
+  // Keep the header row in sync if new columns were added to HEADERS.
+  if (sh.getLastColumn() < HEADERS.length) {
+    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
   }
   return sh;
 }
