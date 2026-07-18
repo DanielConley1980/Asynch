@@ -1309,18 +1309,28 @@
         }
 
 
-        // ── Quiz storage (localStorage, swappable for Google Sheets) ─────────
+        // ── Quiz storage (localStorage cache; syncs to backend when signed in) ─
         const Store = {
-            _key: 'ib-training-v1',
+            _base: 'ib-training-v1',
+            _userKey: null,          // set to per-user key once signed in
             _data: null,
+            key() { return this._userKey || this._base; },
+            setUser(email) { this._userKey = email ? (this._base + '::' + email) : null; this._data = null; },
             load() {
                 if (!this._data) {
-                    try { this._data = JSON.parse(localStorage.getItem(this._key)) || {}; }
+                    try { this._data = JSON.parse(localStorage.getItem(this.key())) || {}; }
                     catch { this._data = {}; }
                 }
                 return this._data;
             },
-            save() { localStorage.setItem(this._key, JSON.stringify(this._data)); },
+            save() {
+                localStorage.setItem(this.key(), JSON.stringify(this._data));
+                if (window.__asynchProgressChanged) window.__asynchProgressChanged(this._data);
+            },
+            hydrate(obj) {
+                this._data = obj || {};
+                localStorage.setItem(this.key(), JSON.stringify(this._data));
+            },
             getSession(n) {
                 const d = this.load();
                 return d[n] || { completed: false, attempts: [], reflectionAnswer: '' };
@@ -1542,6 +1552,25 @@
             window.open('certificate.html' + (who ? '?user=' + encodeURIComponent(who) : ''), '_blank');
         });
         updateCertProgress();
+
+        // ── Hooks for the auth/sync layer (auth.js). No-ops when auth is off. ──
+        function refreshAfterHydrate() {
+            renderGrid();
+            updateCertProgress();
+            const sel = parseInt(localStorage.getItem(LS.week), 10);
+            if (sel && sessionData.some(s => s.session === sel)) displaySessionDetails(sel);
+            else resetSelection();
+        }
+        window.__asynchSetUser = (email, name) => {
+            Store.setUser(email);
+            if (name) localStorage.setItem('ib-demo-user', name);
+        };
+        window.__asynchHydrate = (progress) => { Store.hydrate(progress); refreshAfterHydrate(); };
+        window.__asynchClearUser = () => {
+            Store.setUser(null);
+            localStorage.removeItem('ib-demo-user');
+            refreshAfterHydrate();
+        };
     })();
     </script>
     <script>
@@ -1557,6 +1586,7 @@
             });
         })();
     </script>
+    <script src="auth.js"></script>
     <script src="tweaks.js"></script>
 </body>
 </html>
