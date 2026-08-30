@@ -43,6 +43,7 @@ Open the page, drop in a photo, tune the settings, and download.
 
 | Control | Effect |
 |---|---|
+| **Your machine** | One-click preset (Brother/Babylock, Janome, Viking/Pfaff, Bernina/Melco, Singer, Tajima) that picks the right file format. Brother → `.PES` is the default. |
 | **Hoop size** | Longest side of the finished design (20–300 mm). |
 | **Thread colours** | How many threads to reduce the photo to (2–12). |
 | **Fill density** | Gap between stitch rows — denser = more solid, more stitches. |

@@ -10,6 +10,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -58,6 +59,26 @@ body {
 .dropzone strong { display: block; }
 .dropzone span { color: var(--muted); font-size: .88rem; }
 #thumb { max-height: 240px; border-radius: 8px; }
+
+.presets { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .5rem; }
+.preset {
+  padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 20px;
+  background: #fff; font-size: .85rem; color: var(--ink); cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.preset:hover { border-color: var(--accent); }
+.preset.is-active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.preset-note { color: var(--muted); font-size: .84rem; margin: 0 0 .2rem; }
+
+.advanced { margin-bottom: 1rem; border: 1px solid var(--line); border-radius: 8px; padding: 0 .8rem; }
+.advanced > summary {
+  cursor: pointer; padding: .6rem 0; font-size: .9rem; font-weight: 600; color: var(--muted);
+  list-style: none;
+}
+.advanced > summary::-webkit-details-marker { display: none; }
+.advanced > summary::before { content: "\25B8  "; color: var(--accent); }
+.advanced[open] > summary::before { content: "\25BE  "; }
+.advanced .field { margin: 0 0 .8rem; }
 
 .field { margin-bottom: 1rem; }
 .field > label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .35rem; }

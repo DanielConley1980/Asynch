@@ -17,6 +17,41 @@
   hoop.addEventListener("input", () => hoopOut.textContent = hoop.value + " mm");
   colors.addEventListener("input", () => colorsOut.textContent = colors.value);
 
+  // ---- machine presets ----
+  const formatSel = $("format");
+  const presetNote = $("presetNote");
+  const FMT_LABEL = {};
+  (window.FORMATS || []).forEach((f) => { FMT_LABEL[f.ext] = f.label; });
+
+  document.querySelectorAll(".preset").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".preset").forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      const fmt = btn.dataset.format;
+      formatSel.value = fmt;
+      if (btn.dataset.hoop) {
+        hoop.value = btn.dataset.hoop;
+        hoopOut.textContent = hoop.value + " mm";
+      }
+      presetNote.innerHTML =
+        btn.textContent.trim() + " machines use <strong>." +
+        fmt.toUpperCase() + "</strong> files &mdash; selected.";
+    });
+  });
+
+  // Keep the preset row in sync if someone changes the advanced format manually.
+  formatSel.addEventListener("change", () => {
+    let matched = false;
+    document.querySelectorAll(".preset").forEach((b) => {
+      const on = b.dataset.format === formatSel.value;
+      b.classList.toggle("is-active", on);
+      if (on) matched = true;
+    });
+    presetNote.innerHTML = matched
+      ? presetNote.innerHTML
+      : "Output format: <strong>." + formatSel.value.toUpperCase() + "</strong>.";
+  });
+
   // ---- file selection ----
   function pickFile(file) {
     if (!file || !file.type.startsWith("image/")) return;
