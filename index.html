@@ -26,6 +26,10 @@
             --accent-deep: #0fb9aa;
             --accent-glow: rgba(79, 224, 210, 0.22);
 
+            /* Scrollbar — kept a light blue so it stays visible on the dark surface */
+            --scroll-thumb: #5b8fc9;
+            --scroll-thumb-hover: #86b6e8;
+
             /* RRR tier colours */
             --t-Regulate: #f87171;   /* light red  */
             --t-Relate:   #60a5fa;   /* blue       */
@@ -101,9 +105,11 @@
         ::selection { background: var(--accent-glow); color: var(--text); }
 
         /* Scrollbar */
-        .scroll-area::-webkit-scrollbar { width: 9px; }
-        .scroll-area::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 99px; border: 2px solid transparent; background-clip: padding-box; }
-        .scroll-area::-webkit-scrollbar-thumb:hover { background: var(--surface-3); background-clip: padding-box; }
+        .scroll-area { scrollbar-color: var(--scroll-thumb) transparent; }
+        .scroll-area::-webkit-scrollbar { width: 14px; }
+        .scroll-area::-webkit-scrollbar-track { background: transparent; }
+        .scroll-area::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 99px; border: 3px solid transparent; background-clip: padding-box; }
+        .scroll-area::-webkit-scrollbar-thumb:hover { background: var(--scroll-thumb-hover); background-clip: padding-box; }
 
         .app {
             display: grid;
