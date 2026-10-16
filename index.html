@@ -474,9 +474,9 @@
         }
         .legend-item .licon svg { width: 15px; height: 15px; }
         .legend-item .lname { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); }
-        .legend-item .lcount { width: 22px; flex: none; text-align: right; font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--text-2); font-variant-numeric: tabular-nums; }
-        .legend-item .lbar { width: 72px; flex: none; height: 5px; border-radius: 99px; background: var(--surface-3); overflow: hidden; display: flex; justify-content: flex-end; }
-        .legend-item .lbar i { display: block; height: 100%; border-radius: 99px; }
+        .legend-item .lcount { width: 36px; flex: none; text-align: right; font-family: var(--display); font-weight: 600; font-size: 13.5px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+        .legend-item .lbar { width: 72px; flex: none; height: 5px; border-radius: 99px; background: var(--surface-3); overflow: hidden; display: flex; justify-content: flex-start; }
+        .legend-item .lbar i { display: block; height: 100%; border-radius: 99px; transition: width .45s ease; }
 
         /* ---------- Details pane ---------- */
         aside {
@@ -1053,8 +1053,8 @@
                     <div class="chart-container">
                         <canvas id="themesChart"></canvas>
                         <div class="chart-center">
-                            <b>18</b>
-                            <span>Sessions</span>
+                            <b>0</b>
+                            <span>of 18 complete</span>
                         </div>
                     </div>
                     <div id="legend" class="legend"></div>
@@ -1450,6 +1450,7 @@
                 if (state.completed) {
                     applyGold(document.querySelector(`.week-card[data-week="${sessionNum}"]`));
                     updateCertProgress();
+                    renderThemesChart();
                 }
 
                 renderQuiz(sessionNum, themeColor);
@@ -1494,28 +1495,61 @@
             c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setThemeFilter(c.dataset.theme); } });
         });
 
-        function renderThemesChart() {
-            const counts = sessionData.reduce((acc, s) => { acc[s.theme] = (acc[s.theme]||0)+1; return acc; }, {});
-            const labels = ['Regulate','Relate','Reason'].filter(k => counts[k]);
-            const values = labels.map(l => counts[l]||0);
-            const colors = labels.map(l => themeMeta[l].hex);
-            const total  = values.reduce((a,b)=>a+b,0);
-            const cc = document.querySelector('.chart-center b');
-            if (cc) cc.textContent = total;
+        let themesChart = null;
 
+        function hexA(hex, a) {
+            const h = hex.replace('#', '');
+            const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+            const n = parseInt(full, 16);
+            return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
+        }
+
+        // Progress ring: every session holds a fixed, equal segment. Passed
+        // sessions show their tier colour; the rest stay ghosted, so the ring
+        // fills as each module is completed.
+        function renderThemesChart() {
+            const ordered = [...sessionData].sort((a, b) => a.session - b.session);
+            const total = ordered.length;
+            const done  = ordered.filter(s => Store.isComplete(s.session)).length;
+
+            const bg = ordered.map(s => Store.isComplete(s.session)
+                ? themeMeta[s.theme].hex
+                : hexA(themeMeta[s.theme].hex, 0.15));
+            const bd = ordered.map(s => Store.isComplete(s.session)
+                ? 'rgba(8,17,31,0.9)'
+                : hexA(themeMeta[s.theme].hex, 0.38));
+
+            const cc = document.querySelector('.chart-center b');
+            if (cc) cc.textContent = done;
+            const cs = document.querySelector('.chart-center span');
+            if (cs) cs.textContent = `of ${total} complete`;
+
+            const tiers = ['Regulate','Relate','Reason'].filter(t => ordered.some(s => s.theme === t));
             const legend = document.getElementById('legend');
-            legend.innerHTML = labels.map((l,i) => `
+            legend.innerHTML = tiers.map(t => {
+                const inTier = ordered.filter(s => s.theme === t);
+                const tDone  = inTier.filter(s => Store.isComplete(s.session)).length;
+                const hex    = themeMeta[t].hex;
+                return `
                 <div class="legend-item">
-                    <span class="licon" style="color:${colors[i]}">${themeIcons[l]||''}</span>
-                    <span class="lname">${l}</span>
-                    <span class="lbar"><i style="width:${Math.round(values[i]/Math.max(...values)*100)}%;background:${colors[i]}"></i></span>
-                    <span class="lcount">${values[i]}</span>
-                </div>`).join('');
+                    <span class="licon" style="color:${hex}">${themeIcons[t]||''}</span>
+                    <span class="lname">${t}</span>
+                    <span class="lbar"><i style="width:${Math.round(tDone/inTier.length*100)}%;background:${hex}"></i></span>
+                    <span class="lcount">${tDone}/${inTier.length}</span>
+                </div>`;
+            }).join('');
+
+            const data = {
+                labels: ordered.map(s => `${s.session}. ${s.title}`),
+                datasets: [{ data: ordered.map(() => 1), backgroundColor: bg, borderColor: bd, borderWidth: 2, hoverOffset: 6 }]
+            };
+
+            if (themesChart) { themesChart.data = data; themesChart.update(); return; }
 
             const ctx = document.getElementById('themesChart').getContext('2d');
-            new Chart(ctx, {
+            themesChart = new Chart(ctx, {
                 type: 'doughnut',
-                data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor:'rgba(8,17,31,0.9)', borderWidth:3, hoverOffset:6 }]},
+                data,
                 options: {
                     responsive:true, maintainAspectRatio:false, cutout:'72%',
                     plugins: {
@@ -1524,7 +1558,9 @@
                             backgroundColor:'#0f2238', borderColor:'rgba(128,162,204,0.3)', borderWidth:1, padding:12,
                             titleFont:{family:'Manrope',weight:'700',size:13}, bodyFont:{family:'Manrope',size:13},
                             displayColors:true,
-                            callbacks: { label: c => `  ${values[c.dataIndex]} sessions (${Math.round(values[c.dataIndex]/total*100)}%)` }
+                            callbacks: {
+                                label: c => '  ' + (Store.isComplete(ordered[c.dataIndex].session) ? 'Complete' : 'Not yet complete')
+                            }
                         }
                     }
                 }
@@ -1564,6 +1600,7 @@
         function refreshAfterHydrate() {
             renderGrid();
             updateCertProgress();
+            renderThemesChart();
             const sel = parseInt(localStorage.getItem(LS.week), 10);
             if (sel && sessionData.some(s => s.session === sel)) displaySessionDetails(sel);
             else resetSelection();
