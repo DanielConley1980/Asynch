@@ -42,8 +42,13 @@ const CONFIG = {
   // Friendly name shown as the sender of confirmation / reset emails.
   EMAIL_SENDER_NAME: 'The Neurosequential Approach',
 
-  // Confirmation and password-reset links expire after this many minutes.
+  // Password-reset links expire after this many minutes.
   TOKEN_TTL_MIN: 60,
+
+  // Confirmation links last longer — people often register, then open their
+  // email hours later. An expired one can always be replaced by registering
+  // again with the same address.
+  CONFIRM_TTL_MIN: 10080,   // 7 days
 
   // A login session stays valid for this many days before re-login.
   SESSION_TTL_DAYS: 30,
@@ -112,11 +117,30 @@ function handleRegister_(b) {
   if (password.length < 8) return jsonOut_({ ok: false, error: 'Password must be at least 8 characters.' });
   if (!b.consent) return jsonOut_({ ok: false, error: 'Please tick the consent box to register.' });
 
+  var confirmToken = randHex_(24);
   var existing = findUser_(email);
-  if (existing) return jsonOut_({ ok: false, error: 'An account with this email already exists. Try logging in.' });
+
+  // An account that was never confirmed belongs to nobody yet — registering
+  // again with the same address simply refreshes it and sends a new link,
+  // rather than locking the person out. A confirmed account is never
+  // overwritten this way.
+  if (existing) {
+    if (isConfirmed_(existing.data.emailConfirmed)) {
+      return jsonOut_({ ok: false, error: 'An account with this email already exists. Try logging in, or use "Forgot password".' });
+    }
+    var reSalt = randHex_(16);
+    existing.data.name = name;
+    existing.data.salt = reSalt;
+    existing.data.passwordHash = hashPassword_(password, reSalt);
+    existing.data.confirmToken = confirmToken;
+    existing.data.confirmExpiry = Date.now() + CONFIG.CONFIRM_TTL_MIN * 60000;
+    existing.data.updatedAt = new Date().toISOString();
+    writeUser_(existing.row, existing.data);
+    sendConfirmEmail_(email, name, confirmToken);
+    return jsonOut_({ ok: true, message: 'We have sent you a fresh confirmation link — check your email.' });
+  }
 
   var salt = randHex_(16);
-  var confirmToken = randHex_(24);
   var row = {};
   HEADERS.forEach(function (h) { row[h] = ''; });
   row.email = email;
@@ -125,7 +149,7 @@ function handleRegister_(b) {
   row.salt = salt;
   row.emailConfirmed = false;
   row.confirmToken = confirmToken;
-  row.confirmExpiry = Date.now() + CONFIG.TOKEN_TTL_MIN * 60000;
+  row.confirmExpiry = Date.now() + CONFIG.CONFIRM_TTL_MIN * 60000;
   row.progress = '{}';
   row.consent = 'yes @ ' + new Date().toISOString();
   row.createdAt = new Date().toISOString();
@@ -142,7 +166,7 @@ function handleConfirmEmail_(b) {
   var u = findUserByField_('confirmToken', token);
   if (!u) return jsonOut_({ ok: false, error: 'This confirmation link is invalid or has already been used.' });
   if (Number(u.data.confirmExpiry) < Date.now())
-    return jsonOut_({ ok: false, error: 'This confirmation link has expired. Please register again.' });
+    return jsonOut_({ ok: false, error: 'This confirmation link has expired. Register again with the same email and we will send you a fresh one.' });
 
   u.data.emailConfirmed = true;
   u.data.confirmToken = '';
@@ -158,8 +182,8 @@ function handleLogin_(b) {
   var u = findUser_(email);
   if (!u || u.data.passwordHash !== hashPassword_(password, u.data.salt))
     return jsonOut_({ ok: false, error: 'Email or password is incorrect.' });
-  if (String(u.data.emailConfirmed) !== 'true' && u.data.emailConfirmed !== true)
-    return jsonOut_({ ok: false, error: 'Please confirm your email first — check your inbox.' });
+  if (!isConfirmed_(u.data.emailConfirmed))
+    return jsonOut_({ ok: false, error: 'Please confirm your email first — check your inbox. If the link has expired, register again with the same email for a fresh one.' });
 
   var session = randHex_(32);
   u.data.sessionToken = session;
@@ -349,7 +373,7 @@ function sendConfirmEmail_(email, name, token) {
       '<p>Hi ' + escapeHtml_(name) + ',</p>' +
       '<p>Thanks for registering for the training programme. Please confirm your email by clicking the link below:</p>' +
       '<p><a href="' + link + '">Confirm my account</a></p>' +
-      '<p>This link expires in ' + CONFIG.TOKEN_TTL_MIN + ' minutes. If you did not register, you can ignore this email.</p>'
+      '<p>This link expires in ' + ttlText_(CONFIG.CONFIRM_TTL_MIN) + '. If you did not register, you can ignore this email.</p>'
   });
 }
 
@@ -363,7 +387,7 @@ function sendResetEmail_(email, name, token) {
       '<p>Hi ' + escapeHtml_(name) + ',</p>' +
       '<p>We received a request to reset your password. Click the link below to choose a new one:</p>' +
       '<p><a href="' + link + '">Reset my password</a></p>' +
-      '<p>This link expires in ' + CONFIG.TOKEN_TTL_MIN + ' minutes. If you did not request this, you can ignore this email.</p>'
+      '<p>This link expires in ' + ttlText_(CONFIG.TOKEN_TTL_MIN) + '. If you did not request this, you can ignore this email.</p>'
   });
 }
 
@@ -417,6 +441,16 @@ function bytesToHex_(bytes) {
 }
 
 function normEmail_(v) { return String(v || '').trim().toLowerCase(); }
+
+// The sheet can hand back a real boolean or the text "TRUE"/"true".
+function isConfirmed_(v) { return v === true || String(v).trim().toLowerCase() === 'true'; }
+
+// "7 days" / "60 minutes", for the expiry line in emails.
+function ttlText_(mins) {
+  if (mins % 1440 === 0) { var d = mins / 1440; return d + (d === 1 ? ' day' : ' days'); }
+  if (mins % 60 === 0) { var h = mins / 60; return h + (h === 1 ? ' hour' : ' hours'); }
+  return mins + ' minutes';
+}
 
 function isValidEmail_(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
